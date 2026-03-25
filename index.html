@@ -1,12 +1,591 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darwin Miguel Abarca Vargas</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darwin Miguel Abarca Vargas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+<!-- =====================
+     NAVIGATION
+===================== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Darwin Abarca</a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experiencia</a></li>
+    <li><a href="#education">Formación</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- =====================
+     HERO
+===================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Disponible · Barcelona, España
+    </div>
+
+    <h1 class="hero-name">
+      Darwin <span class="script-name">Abarca</span><br>
+      Vargas
+    </h1>
+
+    <p class="hero-title">
+      <strong>Economista &amp; Developer en Formación</strong>
+      &nbsp;·&nbsp; Data Analyst &nbsp;·&nbsp; Real Estate Specialist
+    </p>
+
+    <p class="hero-desc">
+      Perfil híbrido único: economista con más de 9 años de experiencia en análisis de datos
+      y evaluación de inversiones, en transición activa hacia el desarrollo de software.
+      Actualmente cursando el Certificado de Profesionalidad <strong>IFCD0112</strong> —
+      Programación OOP y Bases de Datos Relacionales — avalado por la Generalitat de Catalunya.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">📬 Contactar</a>
+      <a href="#experience" class="btn btn-outline">Ver trayectoria →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">9<sup>+</sup></div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">64</div>
+        <div class="stat-label">Proyectos formulados · MEF</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">710</div>
+        <div class="stat-label">h de formación en curso</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Países de carrera profesional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================
+     ABOUT
+===================== -->
+<section id="about">
+  <div class="about-grid">
+
+    <!-- Card lateral -->
+    <div class="about-card">
+      <div class="about-avatar">DA</div>
+      <div class="about-card-name">Darwin Miguel Abarca Vargas</div>
+      <div class="about-card-role">Economist · Data Analyst · Developer</div>
+      <div class="about-badges">
+        <span class="badge">📍 Barcelona</span>
+        <span class="badge">🇵🇪 Perú · 🇪🇸 España</span>
+        <span class="badge">🎓 Economista colegiado</span>
+        <span class="badge">🕒 Disponibilidad completa</span>
+      </div>
+      <div class="about-divider"></div>
+      <div class="about-contact-row">
+        <div class="about-contact-item">
+          <span>📧</span>
+          <a href="mailto:darwin@abarcavargas.com">darwin@abarcavargas.com</a>
+        </div>
+        <div class="about-contact-item">
+          <span>📱</span>
+          <a href="tel:+34666133977">+34 666 13 39 77</a>
+        </div>
+        <div class="about-contact-item">
+          <span>💼</span>
+          <a href="https://www.linkedin.com/in/dmabarca/" target="_blank">linkedin.com/in/dmabarca</a>
+        </div>
+        <div class="about-contact-item">
+          <span>🌐</span>
+          <span>Español (nativo) · Inglés (B2)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna de texto -->
+    <div class="about-text">
+      <span class="section-label">Sobre mí</span>
+      <h2 class="section-title">Donde la economía<br>encuentra el código</h2>
+
+      <p>
+        Soy un economista con sólida formación cuantitativa que está dando el salto formal
+        al mundo del desarrollo de software. Mi trayectoria combina <strong>análisis económico
+        avanzado, modelización estadística y evaluación de inversiones públicas y privadas</strong>
+        con herramientas de datos modernas como Python, SQL y Power BI.
+      </p>
+      <p>
+        Tras años aplicando estas herramientas para extraer insights en entornos públicos,
+        financieros e inmobiliarios, decidí formalizar mi perfil tech con el
+        <strong>Certificado de Profesionalidad IFCD0112</strong>, respaldado por el SOC
+        — Generalitat de Catalunya — y el Ministerio de Educación de España.
+      </p>
+      <p>
+        Mi valor diferencial es claro: <strong>entiendo el negocio y los datos</strong>.
+        Puedo construir desde el modelo económico hasta la query SQL que lo alimenta,
+        pasando por el dashboard que lo visualiza.
+      </p>
+
+      <div class="about-highlights">
+        <div class="highlight-item">
+          <span class="hi-icon">📊</span>
+          <div class="hi-text">
+            <strong>Análisis de datos</strong>
+            Python · SQL · Power BI · Stata · R
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="hi-icon">🏛️</span>
+          <div class="hi-text">
+            <strong>Inversión pública</strong>
+            101 proyectos evaluados · MEF Perú
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="hi-icon">🏙️</span>
+          <div class="hi-text">
+            <strong>Real Estate BCN</strong>
+            ROI · Viabilidad · Activos urbanos
+          </div>
+        </div>
+        <div class="highlight-item">
+          <span class="hi-icon">💻</span>
+          <div class="hi-text">
+            <strong>En formación activa</strong>
+            OOP · BBDD · HTML · CSS · Java
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     SKILLS
+===================== -->
+<section id="skills" class="bg-card">
+  <span class="section-label">Stack técnico</span>
+  <h2 class="section-title">Habilidades &amp; Herramientas</h2>
+  <p class="section-subtitle">
+    Combinación de herramientas analíticas consolidadas con tecnologías de desarrollo
+    en aprendizaje activo.
+  </p>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">🐍</span>
+        <div class="skill-card-title">Lenguajes de Programación</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag learning">HTML5 ✦</span>
+        <span class="skill-tag learning">CSS3 ✦</span>
+        <span class="skill-tag learning">Java ✦</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">📦</span>
+        <div class="skill-card-title">Librerías Python</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">Seaborn</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">🗄️</span>
+        <div class="skill-card-title">Bases de Datos</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag learning">PostgreSQL ✦</span>
+        <span class="skill-tag">Diseño relacional</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">📈</span>
+        <div class="skill-card-title">Datos &amp; Visualización</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel Avanzado</span>
+        <span class="skill-tag">Stata</span>
+        <span class="skill-tag">Dashboards</span>
+        <span class="skill-tag">KPIs</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">🏦</span>
+        <div class="skill-card-title">Economía &amp; Finanzas</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Econometría</span>
+        <span class="skill-tag">Series temporales</span>
+        <span class="skill-tag">Regresión</span>
+        <span class="skill-tag">ROI · VAN · TIR</span>
+        <span class="skill-tag">Licitaciones · PPP</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-card-top">
+        <span class="skill-icon">🛠️</span>
+        <div class="skill-card-title">Herramientas &amp; Entorno</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">a3ASESOR|eco</span>
+        <span class="skill-tag">INVIERTE.PE</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="skills-note"><span class="accent">✦</span> Tecnologías en aprendizaje activo (IFCD0112 · 2026)</p>
+</section>
+
+<!-- =====================
+     EXPERIENCE
+===================== -->
+<section id="experience">
+  <span class="section-label">Trayectoria</span>
+  <h2 class="section-title">Experiencia Profesional</h2>
+  <p class="section-subtitle">
+    Más de nueve años combinando análisis económico, gestión de inversiones
+    y ciencia de datos en Perú y España.
+  </p>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div class="timeline-role">Especialista en Activos · Real Estate</div>
+        <span class="timeline-period">May 2022 – Jul 2025 · 3 años</span>
+      </div>
+      <div class="timeline-company">
+        <strong>Anticipa Real Estate SLU · Aliseda SA · Ibero Group Tecnocasa</strong>
+        &nbsp;— Barcelona, España
+      </div>
+      <ul class="timeline-list">
+        <li>Evaluación económica de activos urbanos y rurales: análisis de viabilidad, ROI, VAN y proyección de retorno para inversores privados del sector inmobiliario.</li>
+        <li>Gestión y transformación de bases de datos de clientes e inmuebles mediante SQL, optimizando flujos de información comercial.</li>
+        <li>Desarrollo de dashboards e informes interactivos en Power BI para soporte en toma de decisiones estratégicas.</li>
+        <li>Elaboración de dos planes de negocio en Barcelona para la ONG AESCO, incluyendo análisis de viabilidad y proyecciones financieras.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-header">
+        <div class="timeline-role">Economista Jefe · Unidades Formuladoras de Inversión</div>
+        <span class="timeline-period">Ene 2015 – Sep 2021 · 6 años 9 meses</span>
+      </div>
+      <div class="timeline-company">
+        <strong>Municipios de Colcha, Huayopata, Kosñipata y Coya</strong>
+        &nbsp;— Perú
+      </div>
+      <ul class="timeline-list">
+        <li>Formulación de 64 proyectos de inversión pública viables, registrados en el Ministerio de Economía y Finanzas del Perú bajo la normativa INVIERTE.PE.</li>
+        <li>Evaluación de 101 proyectos para gobiernos subnacionales con análisis de indicadores de rentabilidad social ex-post.</li>
+        <li>Dirección de equipos de más de 300 personas; en 2021 el Municipio de Colcha se posicionó entre los mejores a nivel nacional en calidad de gasto.</li>
+        <li>Captación de financiamiento adicional equivalente al 300% del presupuesto inicial anual, con el 90% de proyectos concluidos y liquidados.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     EDUCATION
+===================== -->
+<section id="education" class="bg-card">
+  <span class="section-label">Formación</span>
+  <h2 class="section-title">Educación &amp; Certificaciones</h2>
+  <p class="section-subtitle">
+    Base académica sólida en economía combinada con formación técnica oficial
+    en programación y desarrollo de software.
+  </p>
+
+  <div class="edu-grid">
+
+    <div class="edu-card featured">
+      <span class="edu-badge">En curso · 2026</span>
+      <div class="edu-icon">💻</div>
+      <div class="edu-degree">IFCD0112 · Programación con Lenguajes OOP y Bases de Datos Relacionales</div>
+      <div class="edu-institution">Orion Prevención S.L. · SOC — Generalitat de Catalunya</div>
+      <div class="edu-period">Mar 2026 – Nov 2026 · 710 horas · Lun–Vie 09:00–14:00</div>
+      <div class="edu-detail">
+        Certificado de Profesionalidad oficial avalado por el Ministerio de Educación
+        y el SEPE. Subvencionado por el SOC con fondos del Ministerio de Educación
+        y Formación Profesional de España.
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon">📚</div>
+      <div class="edu-degree">Máster en Economía, Regulación y Competencia en Servicios Públicos</div>
+      <div class="edu-institution">Universidad de Barcelona</div>
+      <div class="edu-period">Posgrado</div>
+      <div class="edu-detail">
+        Especialización en regulación económica, análisis de mercados, competencia
+        y eficiencia en servicios públicos bajo el marco normativo europeo y español.
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-degree">Licenciatura en Economía</div>
+      <div class="edu-institution">Universidad Andina del Cusco · Perú</div>
+      <div class="edu-period">Grado universitario · Equivalencia reconocida en España</div>
+      <div class="edu-detail">
+        Formación en economía general, estadística aplicada, econometría
+        y evaluación de proyectos de inversión pública y privada.
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-icon">📊</div>
+      <div class="edu-degree">Certificación Oficial en Contabilidad con a3ASESOR|eco</div>
+      <div class="edu-institution">a3Software · España</div>
+      <div class="edu-period">Certificación profesional</div>
+      <div class="edu-detail">
+        Gestión contable y administrativa, informes presupuestarios y financieros
+        en entorno empresarial español.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     PROJECTS
+===================== -->
+<section id="projects">
+  <span class="section-label">Proyectos</span>
+  <h2 class="section-title">Proyectos Destacados</h2>
+  <p class="section-subtitle">
+    Iniciativas que combinan análisis cuantitativo, modelización económica
+    y aplicación práctica de tecnología.
+  </p>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon">📈</div>
+      <div class="project-title">Trading Cuantitativo en Futuros NQ-100</div>
+      <div class="project-desc">
+        Estrategia de trading aplicando análisis cuantitativo, backtesting
+        y modelización predictiva sobre el índice de futuros NASDAQ-100.
+        Integra Python para procesamiento de datos y optimización de señales
+        bajo criterios estadísticos disciplinados.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Backtesting</span>
+        <span class="project-tag">Series Temporales</span>
+        <span class="project-tag">Modelización predictiva</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🏛️</div>
+      <div class="project-title">Portafolio de Inversión Pública · MEF Perú</div>
+      <div class="project-desc">
+        Formulación de 64 proyectos de inversión pública viables y evaluación de
+        101 proyectos para gobiernos subnacionales. El 90% concluidos y liquidados.
+        Captación de financiamiento adicional equivalente al 300% del presupuesto inicial.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">INVIERTE.PE</span>
+        <span class="project-tag">Econometría</span>
+        <span class="project-tag">Excel Avanzado</span>
+        <span class="project-tag">Stata</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🏢</div>
+      <div class="project-title">Planes de Negocio · ONG AESCO Barcelona</div>
+      <div class="project-desc">
+        Elaboración de dos planes de negocio completos en Barcelona, incluyendo
+        análisis de viabilidad económica, proyecciones financieras a 3 años
+        y cuadros de mando adaptados al mercado español.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">Plan de negocio</span>
+        <span class="project-tag">Análisis de viabilidad</span>
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Excel</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🌐</div>
+      <div class="project-title">Portfolio Web Personal — Este sitio</div>
+      <div class="project-desc">
+        Diseño y desarrollo desde cero usando HTML5 y CSS3 puro, sin frameworks.
+        Primera aplicación práctica de los conocimientos adquiridos en el
+        Certificado IFCD0112, con enfoque responsive y dark-mode accesible.
+      </div>
+      <div class="project-tags">
+        <span class="project-tag">HTML5</span>
+        <span class="project-tag">CSS3</span>
+        <span class="project-tag">VS Code</span>
+        <span class="project-tag">Responsive Design</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     CONTACT
+===================== -->
+<section id="contact" class="bg-card">
+  <span class="section-label">Contacto</span>
+  <h2 class="section-title">Hablemos</h2>
+  <p class="section-subtitle">
+    ¿Tienes un proyecto, propuesta u oportunidad? Estoy disponible para roles
+    de análisis de datos, economía aplicada o desarrollo de software.
+  </p>
+
+  <div class="contact-inner">
+
+    <div class="contact-info">
+      <a href="mailto:darwin@abarcavargas.com" class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">darwin@abarcavargas.com</div>
+        </div>
+      </a>
+
+      <a href="tel:+34666133977" class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">Teléfono</div>
+          <div class="contact-value">+34 666 13 39 77</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/dmabarca/" target="_blank" rel="noopener" class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">linkedin.com/in/dmabarca</div>
+        </div>
+      </a>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Ubicación</div>
+          <div class="contact-value">Barcelona, España</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input id="name" type="text" placeholder="Tu nombre completo">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label for="msg">Mensaje</label>
+        <textarea id="msg" placeholder="Cuéntame sobre tu proyecto o propuesta..."></textarea>
+      </div>
+      <button class="btn btn-primary btn-send" id="sendBtn">Enviar mensaje →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- =====================
+     FOOTER
+===================== -->
+<footer>
+  <a href="#hero" class="footer-logo">Darwin Abarca</a>
+  <p class="footer-copy">© 2026 Darwin Miguel Abarca Vargas · Barcelona, España</p>
+  <ul class="footer-links">
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+</footer>
+
+<script>
+  /* --- Hamburger --- */
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* --- Scroll reveal --- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(
+    '.skill-card, .edu-card, .project-card, .timeline-item, .highlight-item, .contact-item'
+  ).forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+
+  /* --- Send button --- */
+  document.getElementById('sendBtn').addEventListener('click', function () {
+    this.textContent = '✅ ¡Mensaje enviado!';
+    this.disabled = true;
+  });
+</script>
+
 </body>
 </html>
