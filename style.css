@@ -1,7 +1,7 @@
 :root {
-      --ag-bg: #080c10;
+      --ag-bg: #000000;
       --ag-bg1: #0d1117;
-      --ag-bg2: #111820;
+      --ag-bg2: #000000;
       --ag-surface: rgba(255, 255, 255, .04);
       --ag-surface-h: rgba(255, 255, 255, .07);
       --ag-border: rgba(255, 255, 255, .08);
@@ -309,19 +309,19 @@
     }
 
     .g-b {
-      color: #4285f4
+      color: var(--ag-blue);
     }
 
     .g-r {
-      color: #ea4335
+      color: var(--ag-red);
     }
 
     .g-y {
-      color: #fbbc05
+      color: var(--ag-yellow);
     }
 
     .g-g {
-      color: #34a853
+      color: var(--ag-green);
     }
 
     .hero-sub {
@@ -451,7 +451,7 @@
       .hero-stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        margin-top: 36px;
+        margin-top: clamp(64px, 16vh, 120px);
       }
       .stat-box {
         padding: 16px 12px;
@@ -1052,8 +1052,8 @@
       animation: fadeUp 1s 0.8s ease both;
     }
 
-    body.intro-done .hero-stats-grid {
-      animation: fadeUp 1.2s 1.2s ease both;
+    .hero-stats-grid.play-anim {
+      animation: fadeUp 1.2s ease both;
     }
 
     /* ════════════════════════════════════
