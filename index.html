@@ -1,591 +1,1689 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darwin Miguel Abarca Vargas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <title>Darwin Abarca – Economista & Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Darwin Abarca - Economista & Developer en Formación" />
+
+  <!-- ── Exact fonts from source ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,400..500&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=block"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════════ */
+    :root {
+      --ag-bg: #080c10;
+      --ag-bg1: #0d1117;
+      --ag-bg2: #111820;
+      --ag-surface: rgba(255, 255, 255, .04);
+      --ag-surface-h: rgba(255, 255, 255, .07);
+      --ag-border: rgba(255, 255, 255, .08);
+      --ag-border-h: rgba(255, 255, 255, .16);
+      --ag-text: #e8eaed;
+      --ag-muted: #9aa0a6;
+      --ag-dim: #5f6368;
+      --ag-blue: #4285f4;
+      --ag-blue-l: #8ab4f8;
+      --ag-green: #34a853;
+      --ag-red: #ea4335;
+      --ag-yellow: #fbbc05;
+      --ag-nav-h: 64px;
+      --ag-r: 20px;
+      --ag-r-sm: 12px;
+      --ag-font: 'Google Sans Flex', 'Google Sans', sans-serif;
+      --ag-mono: 'Google Sans Mono', 'Roboto Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--ag-bg);
+      color: var(--ag-text);
+      font-family: var(--ag-font);
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::selection {
+      background: rgba(66, 133, 244, .28)
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--ag-bg)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, .14);
+      border-radius: 3px
+    }
+
+    /* ── Material Symbols helper ── */
+    .mi {
+      font-family: 'Material Symbols Outlined';
+      font-weight: 300;
+      font-style: normal;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      font-size: inherit;
+    }
+
+    .mi-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24
+    }
+
+    /* ════════════════════════════════════
+   CANVAS LAYERS
+════════════════════════════════════ */
+    #stars-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .5;
+    }
+
+    /* ════════════════════════════════════
+   NAV
+════════════════════════════════════ */
+    .ag-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--ag-nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 4px;
+      background: rgba(8, 12, 16, .68);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--ag-border);
+      z-index: 900;
+      transition: background .3s;
+    }
+
+    .ag-nav.scrolled {
+      background: rgba(8, 12, 16, .94)
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin-right: 8px;
+    }
+
+    .nav-brand-name {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--ag-text);
+      letter-spacing: -.015em;
+    }
+
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .nav-pill a {
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--ag-muted);
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color .18s, background .18s;
+      white-space: nowrap;
+    }
+
+    .nav-pill a .mi {
+      font-size: 16px
+    }
+
+    .nav-pill a:hover {
+      color: var(--ag-text);
+      background: var(--ag-surface-h)
+    }
+
+    .nav-spacer {
+      flex: 1 1 auto
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .btn-ghost {
+      font-family: var(--ag-font);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--ag-text);
+      background: transparent;
+      border: 1px solid var(--ag-border-h);
+      border-radius: 100px;
+      padding: 8px 20px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .18s, border-color .2s;
+      white-space: nowrap;
+    }
+
+    .btn-ghost:hover {
+      background: var(--ag-surface-h);
+      border-color: rgba(255, 255, 255, .28);
+      color: var(--ag-text)
+    }
+
+    .btn-primary {
+      font-family: var(--ag-font);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--ag-blue);
+      border: none;
+      border-radius: 100px;
+      padding: 9px 22px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity .18s, box-shadow .2s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      opacity: .9;
+      color: #fff;
+      box-shadow: 0 0 0 3px rgba(66, 133, 244, .28)
+    }
+
+    /* ════════════════════════════════════
+   HERO
+════════════════════════════════════ */
+    .ag-hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--ag-nav-h) + 72px) 24px 80px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #ring-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1
+    }
+
+    /* gradient vignette to blend rings into page */
+    .ag-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% 50%, transparent 32%, var(--ag-bg) 86%),
+        linear-gradient(to bottom, transparent 55%, var(--ag-bg) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 830px;
+      margin: 0 auto
+    }
+
+    /* badge pill */
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(66, 133, 244, .10);
+      border: 1px solid rgba(66, 133, 244, .28);
+      border-radius: 100px;
+      padding: 5px 16px 5px 10px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--ag-blue-l);
+      margin-bottom: 30px;
+      animation: fadeUp .7s ease both;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ag-blue);
+      flex-shrink: 0;
+      animation: blink 2.4s ease infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .35;
+        transform: scale(1.6)
+      }
+    }
+
+    /* headline */
+    .hero-h {
+      font-size: clamp(52px, 8.5vw, 94px);
+      font-weight: 500;
+      line-height: 1.035;
+      letter-spacing: -.038em;
+      color: #fff;
+      margin-bottom: 22px;
+      animation: fadeUp .75s .08s ease both;
+    }
+
+    .g-b {
+      color: #4285f4
+    }
+
+    .g-r {
+      color: #ea4335
+    }
+
+    .g-y {
+      color: #fbbc05
+    }
+
+    .g-g {
+      color: #34a853
+    }
+
+    .hero-sub {
+      font-size: clamp(15.5px, 2.1vw, 20px);
+      font-weight: 400;
+      color: var(--ag-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.62;
+      animation: fadeUp .75s .17s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      animation: fadeUp .75s .27s ease both;
+    }
+
+    .btn-hero {
+      font-family: var(--ag-font);
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      background: var(--ag-blue);
+      border: none;
+      border-radius: 100px;
+      padding: 13px 28px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(66, 133, 244, .42);
+      color: #fff;
+      opacity: .93
+    }
+
+    .btn-hero-out {
+      font-family: var(--ag-font);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ag-text);
+      background: transparent;
+      border: 1px solid var(--ag-border-h);
+      border-radius: 100px;
+      padding: 13px 28px;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+
+    .btn-hero-out:hover {
+      background: var(--ag-surface-h);
+      border-color: rgba(255, 255, 255, .3);
+      color: var(--ag-text);
+      transform: translateY(-2px)
+    }
+
+    /* app shell preview - repurposed for stats */
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 64px;
+      position: relative;
+      z-index: 3;
+      animation: fadeUp .9s .42s ease both;
+      width: min(860px, 93vw);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media(max-width: 600px) {
+      .hero-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-box {
+      background: var(--ag-surface);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-r-sm);
+      padding: 24px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: transform .3s, background .3s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-4px);
+      background: var(--ag-surface-h);
+    }
+
+    .stat-box-num {
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--ag-blue-l);
+      margin-bottom: 4px;
+    }
+
+    .stat-box-num sup {
+      font-size: 18px;
+    }
+
+    .stat-box-label {
+      font-size: 13px;
+      color: var(--ag-muted);
+    }
+
+    /* ════════════════════════════════════
+   TICKER STRIP
+════════════════════════════════════ */
+    .ag-strip {
+      border-top: 1px solid var(--ag-border);
+      border-bottom: 1px solid var(--ag-border);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(66, 133, 244, .03), transparent 60%);
+    }
+
+    .strip-label {
+      text-align: center;
+      padding: 20px 0 14px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ag-dim);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .strip-track {
+      display: flex;
+      width: max-content;
+      animation: scroll-left 36s linear infinite;
+    }
+
+    .strip-track:hover {
+      animation-play-state: paused
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .s-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 30px;
+      border-right: 1px solid var(--ag-border);
+      white-space: nowrap;
+      font-size: 13.5px;
+      color: var(--ag-muted);
+      cursor: default;
+      transition: color .2s;
+    }
+
+    .s-item:hover {
+      color: var(--ag-text)
+    }
+
+    .s-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════════════════════
+   SECTIONS
+════════════════════════════════════ */
+    .ag-sec {
+      padding: 96px 0
+    }
+
+    .ag-con {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ag-blue-l);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .sh {
+      font-size: clamp(28px, 4.2vw, 50px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.028em;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .sp {
+      font-size: clamp(15px, 1.8vw, 17.5px);
+      color: var(--ag-muted);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    /* ════════════════════════════════════
+   BENTO GRID
+════════════════════════════════════ */
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .bc {
+      background: var(--ag-surface);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-r);
+      padding: 28px 28px 28px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease, border-color .3s, background .3s, box-shadow .3s;
+    }
+
+    .bc.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .bc:hover {
+      border-color: var(--ag-border-h);
+      background: var(--ag-surface-h);
+      box-shadow: 0 22px 64px rgba(0, 0, 0, .45)
+    }
+
+    /* span variants */
+    .bc-8 {
+      grid-column: span 8
+    }
+
+    .bc-4 {
+      grid-column: span 4
+    }
+
+    .bc-6 {
+      grid-column: span 6
+    }
+
+    .bc-12 {
+      grid-column: span 12
+    }
+
+    @media(max-width:900px) {
+
+      .bc-8,
+      .bc-4,
+      .bc-6,
+      .bc-12 {
+        grid-column: span 12
+      }
+    }
+
+    .bc-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .ic-b {
+      background: rgba(66, 133, 244, .14)
+    }
+
+    .ic-g {
+      background: rgba(52, 168, 83, .14)
+    }
+
+    .ic-r {
+      background: rgba(234, 67, 53, .14)
+    }
+
+    .ic-y {
+      background: rgba(251, 188, 5, .14)
+    }
+
+    .bc-h {
+      font-size: 17px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -.01em
+    }
+
+    .bc-p {
+      font-size: 13.5px;
+      color: var(--ag-muted);
+      line-height: 1.6;
+      margin-bottom: 0
+    }
+
+    /* code block */
+    .code-blk {
+      background: rgba(0, 0, 0, .38);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-r-sm);
+      padding: 15px 17px;
+      font-family: var(--ag-mono);
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--ag-muted);
+      margin-bottom: 0;
+      margin-top: 14px;
+    }
+
+    .ck {
+      color: #c792ea
+    }
+
+    .cf {
+      color: #82aaff
+    }
+
+    .cs {
+      color: #c3e88d
+    }
+
+    .cc {
+      color: #546e7a;
+      font-style: italic
+    }
+
+    .ch {
+      color: #ffcb6b
+    }
+
+    /* model pills row */
+    .model-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .model-pill {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(66, 133, 244, .07);
+      border: 1px solid rgba(66, 133, 244, .16);
+      border-radius: var(--ag-r-sm);
+      padding: 14px 16px;
+    }
+
+    .model-pill.dim {
+      background: rgba(255, 255, 255, .035);
+      border-color: var(--ag-border)
+    }
+
+    .model-pill-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ag-blue-l);
+      margin-bottom: 4px
+    }
+
+    .model-pill.dim .model-pill-name {
+      color: var(--ag-text)
+    }
+
+    .model-pill-desc {
+      font-size: 12.5px;
+      color: var(--ag-muted);
+      line-height: 1.45
+    }
+
+    /* ════════════════════════════════════
+   SPLIT SECTIONS
+════════════════════════════════════ */
+    .ag-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center
+    }
+
+    .ag-split.flip {
+      direction: rtl
+    }
+
+    .ag-split.flip>* {
+      direction: ltr
+    }
+
+    @media(max-width:800px) {
+      .ag-split {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .ag-split.flip {
+        direction: ltr
+      }
+    }
+
+    .sv {
+      border-radius: var(--ag-r);
+      overflow: hidden;
+      border: 1px solid var(--ag-border-h);
+      background: var(--ag-surface);
+      padding: 32px;
+      box-shadow: 0 32px 100px rgba(0, 0, 0, .55);
+    }
+
+    .chk-list {
+      list-style: none;
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px
+    }
+
+    .chk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--ag-muted);
+      line-height: 1.55
+    }
+
+    .chk-dot {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .cd-b {
+      background: rgba(66, 133, 244, .18);
+      color: #4285f4
+    }
+
+    .cd-g {
+      background: rgba(52, 168, 83, .18);
+      color: #34a853
+    }
+
+    .cd-r {
+      background: rgba(234, 67, 53, .18);
+      color: #ea4335
+    }
+
+    .chk-item strong {
+      color: var(--ag-text);
+      font-weight: 500
+    }
+
+    /* ════════════════════════════════════
+   CAROUSEL
+════════════════════════════════════ */
+    .carousel-outer {
+      padding: 96px 0 96px 24px;
+      overflow: hidden
+    }
+
+    .carousel-hdr {
+      max-width: 1160px;
+      margin: 0 auto 40px
+    }
+
+    .carousel-wrap {
+      overflow-x: auto;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px
+    }
+
+    .carousel-wrap::-webkit-scrollbar {
+      height: 0
+    }
+
+    .carousel-wrap:active {
+      cursor: grabbing
+    }
+
+    .carousel-row {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      padding-right: 40px
+    }
+
+    .ccard {
+      flex-shrink: 0;
+      width: 316px;
+      background: var(--ag-surface);
+      border: 1px solid var(--ag-border);
+      border-radius: var(--ag-r);
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+
+    .ccard:hover {
+      border-color: var(--ag-border-h);
+      transform: translateY(-6px);
+      box-shadow: 0 28px 72px rgba(0, 0, 0, .52);
+      color: inherit;
+      text-decoration: none
+    }
+
+    .ccard-img {
+      height: 186px;
+      background: var(--ag-surface-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    .ccard-body {
+      padding: 20px 22px 24px
+    }
+
+    .ccard-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ag-blue-l);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 6px
+    }
+
+    .ccard-h {
+      font-size: 15.5px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      letter-spacing: -.01em
+    }
+
+    .ccard-p {
+      font-size: 13px;
+      color: var(--ag-muted);
+      line-height: 1.55
+    }
+
+    /* ════════════════════════════════════
+   CTA
+════════════════════════════════════ */
+    .ag-cta {
+      padding: 120px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ag-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(66, 133, 244, .09) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .ag-cta .sh {
+      margin: 0 auto 18px;
+      max-width: 660px
+    }
+
+    .ag-cta .sp {
+      margin: 0 auto 38px
+    }
+
+    /* ════════════════════════════════════
+   FOOTER
+════════════════════════════════════ */
+    .ag-footer {
+      border-top: 1px solid var(--ag-border);
+      padding: 36px 32px
+    }
+
+    .footer-in {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none
+    }
+
+    .footer-brand-txt {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ag-muted)
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--ag-dim);
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .footer-links a:hover {
+      color: var(--ag-muted)
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--ag-dim)
+    }
+
+    /* ════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(26px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .d1 {
+      transition-delay: .06s !important
+    }
+
+    .d2 {
+      transition-delay: .14s !important
+    }
+
+    .d3 {
+      transition-delay: .22s !important
+    }
+
+    .d4 {
+      transition-delay: .3s !important
+    }
+
+    .d5 {
+      transition-delay: .38s !important
+    }
+
+    @media(max-width:768px) {
+      .nav-pill {
+        display: none
+      }
+
+      .ag-nav {
+        padding: 0 18px
+      }
+
+      .ag-sec {
+        padding: 72px 0
+      }
+
+      .carousel-outer {
+        padding: 72px 0 72px 18px
+      }
+    }
+
+    .timeline-role {
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .timeline-period {
+      font-size: 13px;
+      color: var(--ag-blue-l);
+    }
+
+    .timeline-company {
+      font-size: 14px;
+      color: var(--ag-muted);
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+
+    .timeline-list {
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--ag-muted);
+    }
+
+    .timeline-item {
+      margin-bottom: 32px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ag-blue);
+      box-shadow: 0 0 0 3px rgba(66, 133, 244, .2);
+    }
+
+    .edu-card {
+      background: var(--ag-surface);
+      border: 1px solid var(--ag-border);
+      padding: 24px;
+      border-radius: var(--ag-r-sm);
+      margin-bottom: 16px;
+    }
+
+    .edu-degree {
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .edu-institution {
+      font-size: 14px;
+      color: var(--ag-muted);
+    }
+
+    .edu-period {
+      font-size: 13px;
+      color: var(--ag-blue-l);
+      margin-bottom: 8px;
+      margin-top: 4px;
+    }
+
+    .edu-detail {
+      font-size: 13.5px;
+      color: var(--ag-muted);
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- =====================
-     NAVIGATION
-===================== -->
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">Darwin Abarca</a>
+  <!-- Stars (fixed layer 0) -->
+  <canvas id="stars-canvas"></canvas>
 
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experiencia</a></li>
-    <li><a href="#education">Formación</a></li>
-    <li><a href="#projects">Proyectos</a></li>
-    <li><a href="#contact" class="nav-cta">Contacto</a></li>
-  </ul>
+  <!-- ════════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+  <nav class="ag-nav" id="ag-nav">
 
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
+    <a href="#" class="nav-brand">
+      <span class="mi" style="color:#4285f4; font-size:26px">account_circle</span>
+      <span class="nav-brand-name">Darwin Abarca</span>
+    </a>
 
-<!-- =====================
+    <div class="nav-pill">
+      <a href="#about"><span class="mi" style="font-size:16px">person</span>Sobre mí</a>
+      <a href="#skills"><span class="mi" style="font-size:16px">code</span>Skills</a>
+      <a href="#experience"><span class="mi" style="font-size:16px">work</span>Experiencia</a>
+      <a href="#education"><span class="mi" style="font-size:16px">school</span>Formación</a>
+      <a href="#projects"><span class="mi" style="font-size:16px">folder_special</span>Proyectos</a>
+    </div>
+
+    <div class="nav-spacer"></div>
+
+    <div class="nav-actions">
+      <a href="mailto:darwin@abarcavargas.com" class="btn-primary">
+        Contacto<span class="mi" style="font-size:16px">mail</span>
+      </a>
+    </div>
+
+  </nav>
+
+  <!-- ════════════════════════════════════════
      HERO
-===================== -->
-<section id="hero">
-  <div class="hero-bg"></div>
+════════════════════════════════════════ -->
+  <section class="ag-hero">
+    <canvas id="ring-canvas"></canvas>
 
-  <div class="hero-content">
-    <div class="hero-tag">
-      <span class="dot"></span>
-      Disponible · Barcelona, España
-    </div>
-
-    <h1 class="hero-name">
-      Darwin <span class="script-name">Abarca</span><br>
-      Vargas
-    </h1>
-
-    <p class="hero-title">
-      <strong>Economista &amp; Developer en Formación</strong>
-      &nbsp;·&nbsp; Data Analyst &nbsp;·&nbsp; Real Estate Specialist
-    </p>
-
-    <p class="hero-desc">
-      Perfil híbrido único: economista con más de 9 años de experiencia en análisis de datos
-      y evaluación de inversiones, en transición activa hacia el desarrollo de software.
-      Actualmente cursando el Certificado de Profesionalidad <strong>IFCD0112</strong> —
-      Programación OOP y Bases de Datos Relacionales — avalado por la Generalitat de Catalunya.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">📬 Contactar</a>
-      <a href="#experience" class="btn btn-outline">Ver trayectoria →</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">9<sup>+</sup></div>
-        <div class="stat-label">Años de experiencia</div>
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span class="pill-dot"></span>
+        Disponible · Barcelona, España
       </div>
-      <div class="stat">
-        <div class="stat-num">64</div>
-        <div class="stat-label">Proyectos formulados · MEF</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">710</div>
-        <div class="stat-label">h de formación en curso</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">2</div>
-        <div class="stat-label">Países de carrera profesional</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- =====================
-     ABOUT
-===================== -->
-<section id="about">
-  <div class="about-grid">
+      <h1 class="hero-h">
+        Darwin <br>
+        <span class="g-b">A</span><span class="g-r">b</span><span class="g-y">a</span><span class="g-g">r</span><span
+          class="g-b">c</span><span class="g-r">a</span>
+      </h1>
 
-    <!-- Card lateral -->
-    <div class="about-card">
-      <div class="about-avatar">DA</div>
-      <div class="about-card-name">Darwin Miguel Abarca Vargas</div>
-      <div class="about-card-role">Economist · Data Analyst · Developer</div>
-      <div class="about-badges">
-        <span class="badge">📍 Barcelona</span>
-        <span class="badge">🇵🇪 Perú · 🇪🇸 España</span>
-        <span class="badge">🎓 Economista colegiado</span>
-        <span class="badge">🕒 Disponibilidad completa</span>
-      </div>
-      <div class="about-divider"></div>
-      <div class="about-contact-row">
-        <div class="about-contact-item">
-          <span>📧</span>
-          <a href="mailto:darwin@abarcavargas.com">darwin@abarcavargas.com</a>
-        </div>
-        <div class="about-contact-item">
-          <span>📱</span>
-          <a href="tel:+34666133977">+34 666 13 39 77</a>
-        </div>
-        <div class="about-contact-item">
-          <span>💼</span>
-          <a href="https://www.linkedin.com/in/dmabarca/" target="_blank">linkedin.com/in/dmabarca</a>
-        </div>
-        <div class="about-contact-item">
-          <span>🌐</span>
-          <span>Español (nativo) · Inglés (B2)</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna de texto -->
-    <div class="about-text">
-      <span class="section-label">Sobre mí</span>
-      <h2 class="section-title">Donde la economía<br>encuentra el código</h2>
-
-      <p>
-        Soy un economista con sólida formación cuantitativa que está dando el salto formal
-        al mundo del desarrollo de software. Mi trayectoria combina <strong>análisis económico
-        avanzado, modelización estadística y evaluación de inversiones públicas y privadas</strong>
-        con herramientas de datos modernas como Python, SQL y Power BI.
-      </p>
-      <p>
-        Tras años aplicando estas herramientas para extraer insights en entornos públicos,
-        financieros e inmobiliarios, decidí formalizar mi perfil tech con el
-        <strong>Certificado de Profesionalidad IFCD0112</strong>, respaldado por el SOC
-        — Generalitat de Catalunya — y el Ministerio de Educación de España.
-      </p>
-      <p>
-        Mi valor diferencial es claro: <strong>entiendo el negocio y los datos</strong>.
-        Puedo construir desde el modelo económico hasta la query SQL que lo alimenta,
-        pasando por el dashboard que lo visualiza.
+      <p class="hero-sub" style="margin-bottom:12px;">
+        <strong style="color:white;">Economista &amp; Developer en Formación</strong><br>
+        Data Analyst · Real Estate Specialist
       </p>
 
-      <div class="about-highlights">
-        <div class="highlight-item">
-          <span class="hi-icon">📊</span>
-          <div class="hi-text">
-            <strong>Análisis de datos</strong>
-            Python · SQL · Power BI · Stata · R
+      <p class="hero-sub" style="font-size:15px; max-width: 600px;">
+        Perfil híbrido único: economista con más de 9 años de experiencia en análisis de datos
+        y evaluación de inversiones, en transición activa hacia el desarrollo de software.
+      </p>
+
+      <div class="hero-btns">
+        <a href="mailto:darwin@abarcavargas.com" class="btn-hero">
+          <span class="mi">mail</span>Contactar
+        </a>
+        <a href="#experience" class="btn-hero-out">
+          Ver trayectoria<span class="mi">arrow_downward</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats-grid">
+      <div class="stat-box">
+        <div class="stat-box-num">9<sup>+</sup></div>
+        <div class="stat-box-label">Años de experiencia</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num">64</div>
+        <div class="stat-box-label">Proyectos · MEF</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num">710</div>
+        <div class="stat-box-label">h de formación tech</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-num">2</div>
+        <div class="stat-box-label">Países de carrera</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+     TICKER STRIP
+════════════════════════════════════════ -->
+  <div class="ag-strip">
+    <p class="strip-label">Stack y Herramientas</p>
+    <div class="strip-track" id="strip-track">
+      <div class="s-item"><span class="s-icon ic-b"><span class="mi" style="color:#4285f4">code</span></span>Python
+      </div>
+      <div class="s-item"><span class="s-icon" style="background:rgba(255,255,255,.055)"><span class="mi"
+            style="color:#9aa0a6">database</span></span>SQL</div>
+      <div class="s-item"><span class="s-icon ic-g"><span class="mi" style="color:#34a853">bar_chart</span></span>Power
+        BI</div>
+      <div class="s-item"><span class="s-icon ic-y"><span class="mi"
+            style="color:#fbbc05">integration_instructions</span></span>HTML5 & CSS3</div>
+      <div class="s-item"><span class="s-icon ic-r"><span class="mi" style="color:#ea4335">terminal</span></span>Java
+      </div>
+      <div class="s-item"><span class="s-icon ic-b"><span class="mi" style="color:#4285f4">analytics</span></span>Stata
+        / R</div>
+      <div class="s-item"><span class="s-icon" style="background:rgba(255,255,255,.055)"><span class="mi"
+            style="color:#9aa0a6">trending_up</span></span>Econometría</div>
+      <div class="s-item"><span class="s-icon ic-g"><span class="mi"
+            style="color:#34a853">account_balance</span></span>Real Estate</div>
+
+      <!-- Duplicate for seamless loop -->
+      <div class="s-item"><span class="s-icon ic-b"><span class="mi" style="color:#4285f4">code</span></span>Python
+      </div>
+      <div class="s-item"><span class="s-icon" style="background:rgba(255,255,255,.055)"><span class="mi"
+            style="color:#9aa0a6">database</span></span>SQL</div>
+      <div class="s-item"><span class="s-icon ic-g"><span class="mi" style="color:#34a853">bar_chart</span></span>Power
+        BI</div>
+      <div class="s-item"><span class="s-icon ic-y"><span class="mi"
+            style="color:#fbbc05">integration_instructions</span></span>HTML5 & CSS3</div>
+      <div class="s-item"><span class="s-icon ic-r"><span class="mi" style="color:#ea4335">terminal</span></span>Java
+      </div>
+      <div class="s-item"><span class="s-icon ic-b"><span class="mi" style="color:#4285f4">analytics</span></span>Stata
+        / R</div>
+      <div class="s-item"><span class="s-icon" style="background:rgba(255,255,255,.055)"><span class="mi"
+            style="color:#9aa0a6">trending_up</span></span>Econometría</div>
+      <div class="s-item"><span class="s-icon ic-g"><span class="mi"
+            style="color:#34a853">account_balance</span></span>Real Estate</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+     ABOUT / BENTO GRID
+════════════════════════════════════════ -->
+  <section class="ag-sec" id="about">
+    <div class="ag-con">
+      <p class="eyebrow reveal">Sobre mí</p>
+      <h2 class="sh reveal d1">Donde la economía encuentra el código</h2>
+      <p class="sp reveal d2">Soy un economista con sólida formación cuantitativa que está dando el salto formal al
+        mundo del desarrollo de software. Mi valor diferencial es claro: entiendo el negocio y los datos.</p>
+
+      <div class="bento">
+
+        <!-- Wide: Análisis de datos -->
+        <div class="bc bc-8 d1">
+          <div class="d-flex align-items-start gap-3 mb-1">
+            <div class="bc-ico ic-b"><span class="mi mi-fill" style="color:#4285f4">analytics</span></div>
+            <div>
+              <div class="bc-h">Análisis de datos & Programación</div>
+              <p class="bc-p">Construyo desde el modelo económico hasta la query SQL o el script que lo alimenta,
+                visualizando y comunicando resultados mediante dashboards.</p>
+            </div>
+          </div>
+          <div class="code-blk pt-1 pb-1">
+            <span class="cc"># Análisis integral con Python y SQL</span><br>
+            <span class="ck">import</span> pandas <span class="ck">as</span> pd<br>
+            <span class="cf">query</span> = <span class="cs">"SELECT * FROM inversiones WHERE roi > 10"</span><br>
+            data = pd.<span class="cf">read_sql</span>(<span class="cf">query</span>, db_connection)
           </div>
         </div>
-        <div class="highlight-item">
-          <span class="hi-icon">🏛️</span>
-          <div class="hi-text">
-            <strong>Inversión pública</strong>
-            101 proyectos evaluados · MEF Perú
+
+        <!-- Narrow: Real Estate -->
+        <div class="bc bc-4 d2">
+          <div class="bc-ico ic-g"><span class="mi" style="color:#34a853">location_city</span></div>
+          <div class="bc-h">Real Estate · BCN</div>
+          <p class="bc-p">Evaluación económica de activos urbanos, cálculo de ROI, viabilidad financiera y proyección de
+            retornos en el mercado inmobiliario.</p>
+        </div>
+
+        <!-- Half: Inversión pública -->
+        <div class="bc bc-6 d3">
+          <div class="bc-ico ic-r"><span class="mi mi-fill" style="color:#ea4335">account_balance</span></div>
+          <div class="bc-h">Inversión Pública</div>
+          <p class="bc-p">101 proyectos evaluados para gobiernos subnacionales en Perú (MEF). Formulación, evaluación y
+            dirección de equipos apostando por la rentabilidad social y eficiencia.</p>
+        </div>
+
+        <!-- Half: IFCD0112 -->
+        <div class="bc bc-6 d4">
+          <div class="bc-ico ic-y"><span class="mi mi-fill" style="color:#fbbc05">school</span></div>
+          <div class="bc-h">Formación Tech Certificada</div>
+          <p class="bc-p">Cursando el Certificado IFCD0112 — OOP y Bases de Datos Relacionales, avalado por el SOC y
+            SEPE para robustecer mi base de desarrollo a nivel profesional (Java, HTML/CSS, BD).</p>
+        </div>
+
+        <!-- Full: Stack -->
+        <div class="bc bc-12 d5" id="skills">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="bc-ico ic-b"><span class="mi mi-fill" style="color:#4285f4">code_blocks</span></div>
+            <div>
+              <div class="bc-h">Stack Técnico Consolidado & En Progreso</div>
+              <p class="bc-p mb-0">Herramientas que domino y tecnologías que estoy integrando en mi ecosistema.</p>
+            </div>
+          </div>
+          <div class="model-row">
+            <div class="model-pill">
+              <div class="model-pill-name">Data & Analytics</div>
+              <div class="model-pill-desc">Python (Pandas, NumPy), SQL Server, MySQL, Power BI, Excel Avanzado</div>
+            </div>
+            <div class="model-pill dim">
+              <div class="model-pill-name">Desarrollo Web (Activo)</div>
+              <div class="model-pill-desc">HTML5, CSS3, JavaScript básico, Java</div>
+            </div>
+            <div class="model-pill dim">
+              <div class="model-pill-name">Economía & Finanzas</div>
+              <div class="model-pill-desc">Stata, R, Econometría, VAN, TIR, ROI</div>
+            </div>
           </div>
         </div>
-        <div class="highlight-item">
-          <span class="hi-icon">🏙️</span>
-          <div class="hi-text">
-            <strong>Real Estate BCN</strong>
-            ROI · Viabilidad · Activos urbanos
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+     SPLIT 1: EXPERIENCIA
+════════════════════════════════════════ -->
+  <section class="ag-sec" id="experience"
+    style="background:linear-gradient(180deg,var(--ag-bg) 0%,var(--ag-bg1) 50%,var(--ag-bg) 100%)">
+    <div class="ag-con">
+      <div class="ag-split reveal">
+        <div class="sv">
+          <h3 style="color:#fff; margin-bottom: 24px; font-weight: 500; font-size: 22px;">Experiencia Profesional</h3>
+          <div class="timeline-item">
+            <div class="timeline-role">Especialista en Activos · Real Estate</div>
+            <div class="timeline-period">May 2022 – Jul 2025 · Barcelona, España</div>
+            <div class="timeline-company">Anticipa Real Estate · Aliseda · Tecnocasa</div>
+            <div class="timeline-list">
+              Evaluación económica, análisis de viabilidad, ROI y proyecciones. Transformación de BBDD con SQL para
+              optimizar flujos. Dashboards en Power BI.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-role">Economista Jefe · Unidades de Inversión</div>
+            <div class="timeline-period">Ene 2015 – Sep 2021 · Perú</div>
+            <div class="timeline-company">Municipios (Colcha, Huayopata, Kosñipata, Coya)</div>
+            <div class="timeline-list">
+              Evaluación de más de 100 proyectos públicos (MEF). Captación de financiamiento del 300%. Posicionamiento
+              top nacional en calidad de gasto.
+            </div>
           </div>
         </div>
-        <div class="highlight-item">
-          <span class="hi-icon">💻</span>
-          <div class="hi-text">
-            <strong>En formación activa</strong>
-            OOP · BBDD · HTML · CSS · Java
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================
-     SKILLS
-===================== -->
-<section id="skills" class="bg-card">
-  <span class="section-label">Stack técnico</span>
-  <h2 class="section-title">Habilidades &amp; Herramientas</h2>
-  <p class="section-subtitle">
-    Combinación de herramientas analíticas consolidadas con tecnologías de desarrollo
-    en aprendizaje activo.
-  </p>
-
-  <div class="skills-grid">
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">🐍</span>
-        <div class="skill-card-title">Lenguajes de Programación</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag learning">HTML5 ✦</span>
-        <span class="skill-tag learning">CSS3 ✦</span>
-        <span class="skill-tag learning">Java ✦</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">📦</span>
-        <div class="skill-card-title">Librerías Python</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">NumPy</span>
-        <span class="skill-tag">Matplotlib</span>
-        <span class="skill-tag">Seaborn</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">🗄️</span>
-        <div class="skill-card-title">Bases de Datos</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">SQL Server</span>
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag learning">PostgreSQL ✦</span>
-        <span class="skill-tag">Diseño relacional</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">📈</span>
-        <div class="skill-card-title">Datos &amp; Visualización</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">Excel Avanzado</span>
-        <span class="skill-tag">Stata</span>
-        <span class="skill-tag">Dashboards</span>
-        <span class="skill-tag">KPIs</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">🏦</span>
-        <div class="skill-card-title">Economía &amp; Finanzas</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Econometría</span>
-        <span class="skill-tag">Series temporales</span>
-        <span class="skill-tag">Regresión</span>
-        <span class="skill-tag">ROI · VAN · TIR</span>
-        <span class="skill-tag">Licitaciones · PPP</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-card-top">
-        <span class="skill-icon">🛠️</span>
-        <div class="skill-card-title">Herramientas &amp; Entorno</div>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">VS Code</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">a3ASESOR|eco</span>
-        <span class="skill-tag">INVIERTE.PE</span>
-      </div>
-    </div>
-
-  </div>
-
-  <p class="skills-note"><span class="accent">✦</span> Tecnologías en aprendizaje activo (IFCD0112 · 2026)</p>
-</section>
-
-<!-- =====================
-     EXPERIENCE
-===================== -->
-<section id="experience">
-  <span class="section-label">Trayectoria</span>
-  <h2 class="section-title">Experiencia Profesional</h2>
-  <p class="section-subtitle">
-    Más de nueve años combinando análisis económico, gestión de inversiones
-    y ciencia de datos en Perú y España.
-  </p>
-
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-header">
-        <div class="timeline-role">Especialista en Activos · Real Estate</div>
-        <span class="timeline-period">May 2022 – Jul 2025 · 3 años</span>
-      </div>
-      <div class="timeline-company">
-        <strong>Anticipa Real Estate SLU · Aliseda SA · Ibero Group Tecnocasa</strong>
-        &nbsp;— Barcelona, España
-      </div>
-      <ul class="timeline-list">
-        <li>Evaluación económica de activos urbanos y rurales: análisis de viabilidad, ROI, VAN y proyección de retorno para inversores privados del sector inmobiliario.</li>
-        <li>Gestión y transformación de bases de datos de clientes e inmuebles mediante SQL, optimizando flujos de información comercial.</li>
-        <li>Desarrollo de dashboards e informes interactivos en Power BI para soporte en toma de decisiones estratégicas.</li>
-        <li>Elaboración de dos planes de negocio en Barcelona para la ONG AESCO, incluyendo análisis de viabilidad y proyecciones financieras.</li>
-      </ul>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-header">
-        <div class="timeline-role">Economista Jefe · Unidades Formuladoras de Inversión</div>
-        <span class="timeline-period">Ene 2015 – Sep 2021 · 6 años 9 meses</span>
-      </div>
-      <div class="timeline-company">
-        <strong>Municipios de Colcha, Huayopata, Kosñipata y Coya</strong>
-        &nbsp;— Perú
-      </div>
-      <ul class="timeline-list">
-        <li>Formulación de 64 proyectos de inversión pública viables, registrados en el Ministerio de Economía y Finanzas del Perú bajo la normativa INVIERTE.PE.</li>
-        <li>Evaluación de 101 proyectos para gobiernos subnacionales con análisis de indicadores de rentabilidad social ex-post.</li>
-        <li>Dirección de equipos de más de 300 personas; en 2021 el Municipio de Colcha se posicionó entre los mejores a nivel nacional en calidad de gasto.</li>
-        <li>Captación de financiamiento adicional equivalente al 300% del presupuesto inicial anual, con el 90% de proyectos concluidos y liquidados.</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================
-     EDUCATION
-===================== -->
-<section id="education" class="bg-card">
-  <span class="section-label">Formación</span>
-  <h2 class="section-title">Educación &amp; Certificaciones</h2>
-  <p class="section-subtitle">
-    Base académica sólida en economía combinada con formación técnica oficial
-    en programación y desarrollo de software.
-  </p>
-
-  <div class="edu-grid">
-
-    <div class="edu-card featured">
-      <span class="edu-badge">En curso · 2026</span>
-      <div class="edu-icon">💻</div>
-      <div class="edu-degree">IFCD0112 · Programación con Lenguajes OOP y Bases de Datos Relacionales</div>
-      <div class="edu-institution">Orion Prevención S.L. · SOC — Generalitat de Catalunya</div>
-      <div class="edu-period">Mar 2026 – Nov 2026 · 710 horas · Lun–Vie 09:00–14:00</div>
-      <div class="edu-detail">
-        Certificado de Profesionalidad oficial avalado por el Ministerio de Educación
-        y el SEPE. Subvencionado por el SOC con fondos del Ministerio de Educación
-        y Formación Profesional de España.
-      </div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-icon">📚</div>
-      <div class="edu-degree">Máster en Economía, Regulación y Competencia en Servicios Públicos</div>
-      <div class="edu-institution">Universidad de Barcelona</div>
-      <div class="edu-period">Posgrado</div>
-      <div class="edu-detail">
-        Especialización en regulación económica, análisis de mercados, competencia
-        y eficiencia en servicios públicos bajo el marco normativo europeo y español.
-      </div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-icon">🎓</div>
-      <div class="edu-degree">Licenciatura en Economía</div>
-      <div class="edu-institution">Universidad Andina del Cusco · Perú</div>
-      <div class="edu-period">Grado universitario · Equivalencia reconocida en España</div>
-      <div class="edu-detail">
-        Formación en economía general, estadística aplicada, econometría
-        y evaluación de proyectos de inversión pública y privada.
-      </div>
-    </div>
-
-    <div class="edu-card">
-      <div class="edu-icon">📊</div>
-      <div class="edu-degree">Certificación Oficial en Contabilidad con a3ASESOR|eco</div>
-      <div class="edu-institution">a3Software · España</div>
-      <div class="edu-period">Certificación profesional</div>
-      <div class="edu-detail">
-        Gestión contable y administrativa, informes presupuestarios y financieros
-        en entorno empresarial español.
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================
-     PROJECTS
-===================== -->
-<section id="projects">
-  <span class="section-label">Proyectos</span>
-  <h2 class="section-title">Proyectos Destacados</h2>
-  <p class="section-subtitle">
-    Iniciativas que combinan análisis cuantitativo, modelización económica
-    y aplicación práctica de tecnología.
-  </p>
-
-  <div class="projects-grid">
-
-    <div class="project-card">
-      <div class="project-icon">📈</div>
-      <div class="project-title">Trading Cuantitativo en Futuros NQ-100</div>
-      <div class="project-desc">
-        Estrategia de trading aplicando análisis cuantitativo, backtesting
-        y modelización predictiva sobre el índice de futuros NASDAQ-100.
-        Integra Python para procesamiento de datos y optimización de señales
-        bajo criterios estadísticos disciplinados.
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">Python</span>
-        <span class="project-tag">Backtesting</span>
-        <span class="project-tag">Series Temporales</span>
-        <span class="project-tag">Modelización predictiva</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🏛️</div>
-      <div class="project-title">Portafolio de Inversión Pública · MEF Perú</div>
-      <div class="project-desc">
-        Formulación de 64 proyectos de inversión pública viables y evaluación de
-        101 proyectos para gobiernos subnacionales. El 90% concluidos y liquidados.
-        Captación de financiamiento adicional equivalente al 300% del presupuesto inicial.
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">INVIERTE.PE</span>
-        <span class="project-tag">Econometría</span>
-        <span class="project-tag">Excel Avanzado</span>
-        <span class="project-tag">Stata</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🏢</div>
-      <div class="project-title">Planes de Negocio · ONG AESCO Barcelona</div>
-      <div class="project-desc">
-        Elaboración de dos planes de negocio completos en Barcelona, incluyendo
-        análisis de viabilidad económica, proyecciones financieras a 3 años
-        y cuadros de mando adaptados al mercado español.
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">Plan de negocio</span>
-        <span class="project-tag">Análisis de viabilidad</span>
-        <span class="project-tag">Power BI</span>
-        <span class="project-tag">Excel</span>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🌐</div>
-      <div class="project-title">Portfolio Web Personal — Este sitio</div>
-      <div class="project-desc">
-        Diseño y desarrollo desde cero usando HTML5 y CSS3 puro, sin frameworks.
-        Primera aplicación práctica de los conocimientos adquiridos en el
-        Certificado IFCD0112, con enfoque responsive y dark-mode accesible.
-      </div>
-      <div class="project-tags">
-        <span class="project-tag">HTML5</span>
-        <span class="project-tag">CSS3</span>
-        <span class="project-tag">VS Code</span>
-        <span class="project-tag">Responsive Design</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================
-     CONTACT
-===================== -->
-<section id="contact" class="bg-card">
-  <span class="section-label">Contacto</span>
-  <h2 class="section-title">Hablemos</h2>
-  <p class="section-subtitle">
-    ¿Tienes un proyecto, propuesta u oportunidad? Estoy disponible para roles
-    de análisis de datos, economía aplicada o desarrollo de software.
-  </p>
-
-  <div class="contact-inner">
-
-    <div class="contact-info">
-      <a href="mailto:darwin@abarcavargas.com" class="contact-item">
-        <div class="contact-icon">📧</div>
         <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">darwin@abarcavargas.com</div>
+          <p class="eyebrow">Trayectoria</p>
+          <h2 class="sh">Más de 9 años aportando valor</h2>
+          <p class="sp">Combinando análisis económico, gestión de grandes inversiones y ciencia de datos aplicada a la
+            rentabilidad corporativa o social, tanto en Perú como en España.</p>
+          <ul class="chk-list">
+            <li class="chk-item">
+              <span class="chk-dot cd-b"><span class="mi" style="font-size:12px">check</span></span>
+              <div><strong>Análisis Cuantitativo</strong> &middot; Modelos robustos para tomar decisiones críticas</div>
+            </li>
+            <li class="chk-item">
+              <span class="chk-dot cd-g"><span class="mi" style="font-size:12px">check</span></span>
+              <div><strong>Liderazgo de equipos</strong> &middot; Gestión y dirección con alto impacto</div>
+            </li>
+            <li class="chk-item">
+              <span class="chk-dot cd-r"><span class="mi" style="font-size:12px">check</span></span>
+              <div><strong>Versatilidad sectorial</strong> &middot; Del ámbito público peruano al sector privado e
+                inmobiliario español</div>
+            </li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+     CAROUSEL - PROYECTOS
+════════════════════════════════════════ -->
+  <div class="carousel-outer" id="projects">
+    <div class="carousel-hdr">
+      <p class="eyebrow reveal">Proyectos</p>
+      <h2 class="sh reveal d1">Iniciativas Destacadas</h2>
+    </div>
+    <div class="carousel-wrap" id="car-wrap">
+      <div class="carousel-row">
+        <div class="ccard">
+          <div class="ccard-img"><span class="mi" style="color:var(--ag-blue)">candlestick_chart</span></div>
+          <div class="ccard-body">
+            <p class="ccard-tag">Finanzas Cuantitativas</p>
+            <h3 class="ccard-h">Trading en Futuros NQ-100</h3>
+            <p class="ccard-p">Estrategia cuantitativa con backtesting y modelización predictiva usando Python y series
+              temporales.</p>
+          </div>
+        </div>
+        <div class="ccard">
+          <div class="ccard-img"><span class="mi" style="color:var(--ag-red)">account_balance</span></div>
+          <div class="ccard-body">
+            <p class="ccard-tag">Sector Público</p>
+            <h3 class="ccard-h">Portafolio Inversión MEF</h3>
+            <p class="ccard-p">101 proyectos subnacionales evaluados. Financiamiento incrementado en 300% con modelos en
+              Stata y Excel.</p>
+          </div>
+        </div>
+        <div class="ccard">
+          <div class="ccard-img"><span class="mi" style="color:var(--ag-yellow)">business_center</span></div>
+          <div class="ccard-body">
+            <p class="ccard-tag">Negocio & Estrategia</p>
+            <h3 class="ccard-h">Planes ONG AESCO Barcelona</h3>
+            <p class="ccard-p">Análisis de viabilidad económica, proyecciones a 3 años y cuadros de mando interactivos
+              en Power BI.</p>
+          </div>
+        </div>
+        <div class="ccard">
+          <div class="ccard-img"><span class="mi" style="color:var(--ag-green)">web</span></div>
+          <div class="ccard-body">
+            <p class="ccard-tag">Desarrollo Web</p>
+            <h3 class="ccard-h">Portfolio Personal HTML/CSS</h3>
+            <p class="ccard-p">Diseño y desarrollo estructurado 100% puro aplicando fundamentos del certificado
+              IFCD0112.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+     SPLIT 2: EDUCACION
+════════════════════════════════════════ -->
+  <section class="ag-sec" id="education">
+    <div class="ag-con">
+      <div class="ag-split flip reveal">
+        <div class="sv">
+          <div class="edu-card" style="border-color: rgba(66,133,244,.4); background: rgba(66,133,244,.05);">
+            <div class="edu-degree">IFCD0112 · Programación OOP y BBDD Relacionales</div>
+            <div class="edu-period">En curso · 710 hrs · SOC Catalunya</div>
+            <div class="edu-detail">Certificado de profesionalidad subvencionado y avalado por el Ministerio de
+              Educación y Formación Profesional de España.</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">Máster en Economía, Regulación y Competencia</div>
+            <div class="edu-period">Universidad de Barcelona</div>
+            <div class="edu-detail">Especialización en análisis de mercados y eficiencia.</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">Licenciatura en Economía</div>
+            <div class="edu-period">Universidad Andina del Cusco</div>
+            <div class="edu-detail">Formación en estadística, econometría e inversiones (Reconocida).</div>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Formación</p>
+          <h2 class="sh">Base académica, evolución tecnológica</h2>
+          <p class="sp">El rigor universitario combinado con certificaciones prácticas enfocadas en el desarrollo de
+            software.</p>
+          <ul class="chk-list">
+            <li class="chk-item">
+              <span class="chk-dot cd-b"><span class="mi" style="font-size:12px">check</span></span>
+              <div><strong>Titulación europea</strong> &middot; Formación en España que complementa el background
+                americano</div>
+            </li>
+            <li class="chk-item">
+              <span class="chk-dot cd-g"><span class="mi" style="font-size:12px">check</span></span>
+              <div><strong>Certificación Oficial</strong> &middot; Aprendizaje de código reglamentado (SOC)</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+     CTA / CONTACTO
+════════════════════════════════════════ -->
+  <section class="ag-cta" id="contact">
+    <p class="eyebrow reveal">Hablemos</p>
+    <h2 class="sh reveal d1">¿Tienes un proyecto o propuesta?</h2>
+    <p class="sp reveal d2">Disponible para roles de análisis de datos, economía aplicada o desarrollo de software en
+      España.</p>
+    <div class="d-flex justify-content-center flex-wrap gap-3 reveal d3">
+      <a href="mailto:darwin@abarcavargas.com" class="btn-hero">
+        <span class="mi">mail</span>Enviar Email
       </a>
-
-      <a href="tel:+34666133977" class="contact-item">
-        <div class="contact-icon">📱</div>
-        <div>
-          <div class="contact-label">Teléfono</div>
-          <div class="contact-value">+34 666 13 39 77</div>
-        </div>
+      <a href="https://www.linkedin.com/in/dmabarca/" target="_blank" class="btn-hero-out">
+        Ver LinkedIn<span class="mi">arrow_forward</span>
       </a>
-
-      <a href="https://www.linkedin.com/in/dmabarca/" target="_blank" rel="noopener" class="contact-item">
-        <div class="contact-icon">💼</div>
-        <div>
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value">linkedin.com/in/dmabarca</div>
-        </div>
-      </a>
-
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <div class="contact-label">Ubicación</div>
-          <div class="contact-value">Barcelona, España</div>
-        </div>
-      </div>
     </div>
+  </section>
 
-    <div class="contact-form">
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input id="name" type="text" placeholder="Tu nombre completo">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="tu@email.com">
-      </div>
-      <div class="form-group">
-        <label for="msg">Mensaje</label>
-        <textarea id="msg" placeholder="Cuéntame sobre tu proyecto o propuesta..."></textarea>
-      </div>
-      <button class="btn btn-primary btn-send" id="sendBtn">Enviar mensaje →</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- =====================
+  <!-- ════════════════════════════════════════
      FOOTER
-===================== -->
-<footer>
-  <a href="#hero" class="footer-logo">Darwin Abarca</a>
-  <p class="footer-copy">© 2026 Darwin Miguel Abarca Vargas · Barcelona, España</p>
-  <ul class="footer-links">
-    <li><a href="#hero">Inicio</a></li>
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contacto</a></li>
-  </ul>
-</footer>
+════════════════════════════════════════ -->
+  <footer class="ag-footer">
+    <div class="footer-in">
+      <a href="#" class="footer-brand">
+        <span class="mi" style="color:#9aa0a6">account_circle</span>
+        <span class="footer-brand-txt">Darwin Abarca Vargas</span>
+      </a>
+      <nav class="footer-links">
+        <a href="mailto:darwin@abarcavargas.com">darwin@abarcavargas.com</a>
+        <a href="tel:+34666133977">+34 666 13 39 77</a>
+      </nav>
+      <span class="footer-copy">© 2026 Darwin Abarca · Barcelona, España</span>
+    </div>
+  </footer>
 
-<script>
-  /* --- Hamburger --- */
-  const toggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  /* --- Scroll reveal --- */
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /* ═══════════════════════════════
+       STARS
+    ═══════════════════════════════ */
+    (function () {
+      const c = document.getElementById('stars-canvas');
+      if (!c) return;
+      const x = c.getContext('2d');
+      let S = [];
+      function resize() { c.width = innerWidth; c.height = innerHeight; }
+      function init(n = 260) {
+        S = Array.from({ length: n }, () => ({
+          x: Math.random() * innerWidth, y: Math.random() * innerHeight,
+          r: Math.random() * 1.4 + .2, a: Math.random(),
+          da: (Math.random() - .5) * .008,
+          vx: (Math.random() - .5) * .045, vy: (Math.random() - .5) * .045
+        }));
       }
-    });
-  }, { threshold: 0.1 });
+      function draw() {
+        x.clearRect(0, 0, c.width, c.height);
+        S.forEach(s => {
+          s.x = (s.x + s.vx + c.width) % c.width;
+          s.y = (s.y + s.vy + c.height) % c.height;
+          s.a = Math.max(.04, Math.min(1, s.a + s.da));
+          if (s.a <= .04 || s.a >= 1) s.da *= -1;
+          x.beginPath(); x.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          x.fillStyle = `rgba(255,255,255,${s.a.toFixed(3)})`; x.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      resize(); init(); draw();
+      window.addEventListener('resize', () => { resize(); init(); });
+    })();
 
-  document.querySelectorAll(
-    '.skill-card, .edu-card, .project-card, .timeline-item, .highlight-item, .contact-item'
-  ).forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+    /* ═══════════════════════════════
+       RING PARTICLES
+    ═══════════════════════════════ */
+    (function () {
+      const c = document.getElementById('ring-canvas');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      let W, H, cx, cy;
+      const mouse = { x: 0, y: 0 };
 
-  /* --- Send button --- */
-  document.getElementById('sendBtn').addEventListener('click', function () {
-    this.textContent = '✅ ¡Mensaje enviado!';
-    this.disabled = true;
-  });
-</script>
+      function resize() {
+        W = c.width = innerWidth; H = c.height = innerHeight;
+        cx = W / 2; cy = H / 2;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+      window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
+      const rings = [
+        { r: 100, n: 22, spd: .009, sz: 2.1, col: 'rgba(66,133,244,' },
+        { r: 175, n: 36, spd: -.007, sz: 1.7, col: 'rgba(66,133,244,' },
+        { r: 260, n: 50, spd: .006, sz: 1.4, col: 'rgba(100,180,255,' },
+        { r: 350, n: 65, spd: -.005, sz: 1.15, col: 'rgba(66,133,244,' },
+        { r: 445, n: 80, spd: .004, sz: .95, col: 'rgba(80,160,255,' },
+        { r: 545, n: 96, spd: -.003, sz: .75, col: 'rgba(66,133,244,' },
+        { r: 650, n: 112, spd: .002, sz: .6, col: 'rgba(100,180,255,' },
+      ];
+      rings.forEach(r => {
+        r.ang = Array.from({ length: r.n }, (_, i) => (i / r.n) * Math.PI * 2);
+        r.off = Array.from({ length: r.n }, () => (Math.random() - .5) * .35);
+        r.alp = Array.from({ length: r.n }, () => .28 + Math.random() * .55);
+        r.flk = Array.from({ length: r.n }, () => Math.random() * Math.PI * 2);
+      });
+
+      let t = 0;
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        const mx = (mouse.x - cx) * .032, my = (mouse.y - cy) * .032;
+
+        rings.forEach(r => {
+          if (r.r > Math.max(W, H) * .62) return;
+          r.ang = r.ang.map((a, i) => a + r.spd + r.off[i] * .001);
+          r.ang.forEach((a, i) => {
+            const al = r.alp[i] * (.68 + .32 * Math.sin(t * 1.9 + r.flk[i]));
+            const px = cx + mx + Math.cos(a) * r.r;
+            const py = cy + my + Math.sin(a) * r.r;
+            const ef = Math.min(1, Math.min(px, W - px, py, H - py) / 70);
+            ctx.beginPath(); ctx.arc(px, py, r.sz, 0, Math.PI * 2);
+            ctx.fillStyle = r.col + (al * ef).toFixed(3) + ')'; ctx.fill();
+          });
+        });
+        // soft centre glow
+        const g = ctx.createRadialGradient(cx + mx * .4, cy + my * .4, 0, cx + mx * .4, cy + my * .4, 88);
+        g.addColorStop(0, 'rgba(66,133,244,0.05)'); g.addColorStop(1, 'rgba(66,133,244,0)');
+        ctx.beginPath(); ctx.arc(cx + mx * .4, cy + my * .4, 88, 0, Math.PI * 2);
+        ctx.fillStyle = g; ctx.fill();
+        t += .016;
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ═══════════════════════════════
+       REVEAL
+    ═══════════════════════════════ */
+    (function () {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      }, { threshold: .1 });
+      document.querySelectorAll('.reveal,.bc').forEach(el => io.observe(el));
+    })();
+
+    /* ═══════════════════════════════
+       CAROUSEL DRAG
+    ═══════════════════════════════ */
+    (function () {
+      const w = document.getElementById('car-wrap');
+      if (!w) return;
+      let dn = false, sx = 0, sl = 0;
+      w.addEventListener('mousedown', e => { dn = true; sx = e.pageX - w.offsetLeft; sl = w.scrollLeft; w.style.cursor = 'grabbing'; });
+      w.addEventListener('mouseleave', () => { dn = false; w.style.cursor = 'grab'; });
+      w.addEventListener('mouseup', () => { dn = false; w.style.cursor = 'grab'; });
+      w.addEventListener('mousemove', e => {
+        if (!dn) return; e.preventDefault();
+        w.scrollLeft = sl - (e.pageX - w.offsetLeft - sx) * 1.4;
+      });
+    })();
+
+    /* ═══════════════════════════════
+       NAV TINT ON SCROLL
+    ═══════════════════════════════ */
+    (function () {
+      const nav = document.getElementById('ag-nav');
+      if (!nav) return;
+      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 48), { passive: true });
+    })();
+  </script>
 </body>
+
 </html>
