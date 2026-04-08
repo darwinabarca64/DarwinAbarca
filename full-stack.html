@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Full-Stack – Darwin Abarca</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,400..500&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=block"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .back-nav { position: fixed; top: 24px; left: 24px; z-index: 1000; }
+  </style>
+</head>
+
+<body class="theme-tech">
+  <canvas id="stars-canvas"></canvas>
+
+  <nav class="back-nav">
+    <a href="index.html" class="btn-ghost" style="background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);">
+      <span class="mi">arrow_back</span>Volver
+    </a>
+  </nav>
+
+  <header class="page-header">
+    <div class="ag-con">
+      <p class="eyebrow reveal">Predictive Architectures</p>
+      <h1 class="hero-big-txt reveal d1">Future <span class="accent-txt">Stack</span><br>Systems</h1>
+      <p class="section-desc reveal d2">
+        Building high-performance, AI-driven applications with production-grade reliability and seamless user experience.
+      </p>
+    </div>
+  </header>
+
+  <section class="ag-sec" style="padding-top: 0;">
+    <div class="ag-con">
+      <div class="feature-grid">
+        <div class="f-card reveal d1">
+          <span class="mi f-icon">developer_mode</span>
+          <h3 class="f-h">Mobile AI</h3>
+          <p class="f-p">React Native apps integrated with on-device and cloud-based predictive models for personalized user experiences.</p>
+        </div>
+        <div class="f-card reveal d2">
+          <span class="mi f-icon">speed</span>
+          <h3 class="f-h">Scalable Backends</h3>
+          <p class="f-p">Node.js and Python microservices optimized for low latency and high concurrency in financial data processing.</p>
+        </div>
+        <div class="f-card reveal d3">
+          <span class="mi f-icon">terminal</span>
+          <h3 class="f-h">DevOps & ETL</h3>
+          <p class="f-p">Automated data pipelines and infrastructure as code to manage complex economic modeling environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="ag-footer">
+    <div class="footer-in">
+      <span class="footer-copy">© 2026 Darwin Abarca · Barcelona, Spain</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/whatsapp-widget.js"></script>
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+
+</html>

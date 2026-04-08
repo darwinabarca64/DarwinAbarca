@@ -41,10 +41,10 @@
 
     <div class="nav-pill">
       <a href="#about"><span class="mi" style="font-size:16px">person</span>About</a>
-      <a href="#skills"><span class="mi" style="font-size:16px">code</span>Skills</a>
-      <a href="#experience"><span class="mi" style="font-size:16px">work</span>Experience</a>
-      <a href="#education"><span class="mi" style="font-size:16px">school</span>Education</a>
-      <a href="#projects"><span class="mi" style="font-size:16px">folder_special</span>Projects</a>
+      <a href="#skills"><span class="mi" style="font-size:16px">code</span>Trading</a>
+      <a href="#experience"><span class="mi" style="font-size:16px">work</span>Public-Sector</a>
+      <a href="#education"><span class="mi" style="font-size:16px">school</span>Tech</a>
+      <a href="#projects"><span class="mi" style="font-size:16px">folder_special</span>Real-Estate</a>
     </div>
 
     <div class="nav-spacer"></div>
@@ -63,12 +63,7 @@
   <section class="ag-hero">
     <canvas id="ring-canvas"></canvas>
 
-    <div class="hero-inner">
-      <div class="hero-pill">
-        <span class="pill-dot"></span>
-        Immediate Availability · Barcelona, Spain
-      </div>
-
+    <div class="hero-splash">
       <h1 class="hero-h" style="opacity: 1;">
         DM <br>
         <span style="color: #ffb300;">Abarca</span>
@@ -83,15 +78,6 @@
         Bilingual profile integrating rigorous econometrics, causal inference, and machine learning with
         production-grade full-stack development.
       </p>
-
-      <div class="hero-btns">
-        <a href="mailto:darwin@abarcavargas.com" class="btn-hero">
-          <span class="mi">mail</span>Contact
-        </a>
-        <a href="#experience" class="btn-hero-out">
-          View Journey<span class="mi">arrow_downward</span>
-        </a>
-      </div>
     </div>
 
     <div class="hero-stats-grid">
@@ -154,155 +140,23 @@
   </div>
 
   <!-- ════════════════════════════════════════
-     ABOUT / BENTO GRID
+     CAROUSEL - PROYECTOS
 ════════════════════════════════════════ -->
-  <section class="ag-sec" id="about">
-    <div class="ag-con">
+  <div class="carousel-outer" id="about">
+    <div class="carousel-hdr">
       <p class="eyebrow reveal">About Me</p>
       <h2 class="sh reveal d1">Where Economics Meets Code</h2>
       <p class="sp reveal d2">I lead the complete data cycle in production environments: extraction, cleaning, causal
         and predictive modeling, executive visualization, and scalable solution deployment.</p>
-
-      <div class="bento">
-
-        <!-- Wide: Análisis de datos -->
-        <div class="bc bc-8 d1">
-          <div class="d-flex align-items-start gap-3 mb-1">
-            <div class="bc-ico ic-b"><span class="mi mi-fill" style="color:var(--ag-blue)">analytics</span></div>
-            <div>
-              <div class="bc-h">Quantitative Analysis & Full-Stack AI</div>
-              <p class="bc-p">Integrate causal AI and LLMs to deliver actionable insights. Proficient in production
-                Python, complex SQL pipelines, and React Native MVVM structures.</p>
-            </div>
-          </div>
-          <div class="code-blk pt-1 pb-1">
-            <span class="cc"># Causal Inference Model execution</span><br>
-            <span class="ck">import</span> econml <span class="ck">as</span> eml<br>
-            <span class="cf">est</span> = <span class="cs">eml.DML(model_y=..., model_t=...)</span><br>
-            effect = est.<span class="cf">effect</span>(deployment_data)
-          </div>
-        </div>
-
-        <!-- Narrow: Real Estate -->
-        <div class="bc bc-4 d2">
-          <div class="bc-ico ic-g"><span class="mi" style="color:var(--ag-green)">location_city</span></div>
-          <div class="bc-h">Real Estate & Proptech</div>
-          <p class="bc-p">Diff-in-Diff analysis of Spain’s rental market, ROI assessments, and predictive dashboards
-            optimizing commercial strategies.</p>
-        </div>
-
-        <!-- Half: Trading -->
-        <div class="bc bc-6 d3">
-          <div class="bc-ico ic-r"><span class="mi mi-fill" style="color:var(--ag-red)">candlestick_chart</span></div>
-          <div class="bc-h">Quantitative Trading</div>
-          <p class="bc-p">Profitable strategies on US index futures (NQ-100, ES). Applying time-series analysis,
-            mathematical optimization, and strict risk management.</p>
-        </div>
-
-        <!-- Half: Public Investment -->
-        <div class="bc bc-6 d4">
-          <div class="bc-ico ic-y"><span class="mi mi-fill" style="color:var(--ag-yellow)">account_balance</span></div>
-          <div class="bc-h">Public Investment</div>
-          <p class="bc-p">Evaluated 100+ projects in Peru. Developed regression and feasibility models that
-            significantly multiplied secured funding for regional impact.</p>
-        </div>
-
-        <!-- Full: Stack -->
-        <div class="bc bc-12 d5" id="skills">
-          <div class="d-flex align-items-center gap-3 mb-2">
-            <div class="bc-ico ic-b"><span class="mi mi-fill" style="color:var(--ag-blue)">code_blocks</span></div>
-            <div>
-              <div class="bc-h">Senior Technical Stack</div>
-              <p class="bc-p mb-0">Production-grade tools bridging data science and full-stack development.</p>
-            </div>
-          </div>
-          <div class="model-row">
-            <div class="model-pill">
-              <div class="model-pill-name">Advanced AI & Data</div>
-              <div class="model-pill-desc">Python (Pandas, Scikit-learn, DoWhy), SQL/MySQL pipelines, Power BI</div>
-            </div>
-            <div class="model-pill dim">
-              <div class="model-pill-name">Full-Stack Development</div>
-              <div class="model-pill-desc">React Native (MVVM architect.), Node.js, HTML5/CSS3, Java</div>
-            </div>
-            <div class="model-pill dim">
-              <div class="model-pill-name">Econometrics & Models</div>
-              <div class="model-pill-desc">Diff-in-Diff, Regression Discontinuity, Time-Series Forecasting, NPV/ROI
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-     SPLIT 1: EXPERIENCIA
-════════════════════════════════════════ -->
-  <section class="ag-sec" id="experience"
-    style="background:linear-gradient(180deg,var(--ag-bg) 0%,var(--ag-bg1) 50%,var(--ag-bg) 100%)">
-    <div class="ag-con">
-      <div class="ag-split reveal">
-        <div class="sv">
-          <h3 style="color:#fff; margin-bottom: 24px; font-weight: 500; font-size: 22px;">Professional Experience</h3>
-          <div class="timeline-item">
-            <div class="timeline-role">Senior Economic Analyst & Real Estate Agent</div>
-            <div class="timeline-period">May 2022 – Present · Barcelona, Spain</div>
-            <div class="timeline-company">Anticipa Real Estate · Aliseda SA · Tecnocasa</div>
-            <div class="timeline-list">
-              Led real estate operations exceeding €4 million in sales. Conducted Diff-in-Diff analysis of Spain’s
-              rental market and developed predictive dashboards that optimized commercial strategies.
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-role">Senior Data Analyst & Economist</div>
-            <div class="timeline-period">Jan 2015 – Sep 2021 · Cusco, Peru</div>
-            <div class="timeline-company">Municipalities of Colcha, Huayopata, Kosñipata, Coya</div>
-            <div class="timeline-list">
-              Designed and executed over 100 econometric models for public projects. Optimized resources and achieved
-              significant increases in secured funding through causal analysis and time-series modeling.
-            </div>
-          </div>
-        </div>
-        <div>
-          <p class="eyebrow">Career Path</p>
-          <h2 class="sh">Over 9 years of value creation</h2>
-          <p class="sp">Combining economic analysis, large investment management, and data science applied to corporate
-            and social profitability, bridging from SA to Europe.</p>
-          <ul class="chk-list">
-            <li class="chk-item">
-              <span class="chk-dot cd-b"><span class="mi" style="font-size:12px">check</span></span>
-              <div><strong>Quantitative Analysis</strong> &middot; Rigorous econometrics and causal inference for
-                critical decisions</div>
-            </li>
-            <li class="chk-item">
-              <span class="chk-dot cd-g"><span class="mi" style="font-size:12px">check</span></span>
-              <div><strong>Advanced Development</strong> &middot; Real-time AI integration with production-grade
-                full-stack tools</div>
-            </li>
-            <li class="chk-item">
-              <span class="chk-dot cd-r"><span class="mi" style="font-size:12px">check</span></span>
-              <div><strong>Global Versatility</strong> &middot; Delivering structural high-impact growth for European
-                proptech and South American institutions</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
-     CAROUSEL - PROYECTOS
-════════════════════════════════════════ -->
-  <div class="carousel-outer" id="projects">
-    <div class="carousel-hdr">
-      <p class="eyebrow reveal">Projects</p>
-      <h2 class="sh reveal d1">Featured Initiatives</h2>
     </div>
     <div class="carousel-wrap" id="car-wrap">
+      <!-- 
+           GREEN COMMENT: 
+           Puedes agregar o quitar opciones de servicio aquí duplicando o eliminando el bloque <a>...</a>.
+           Cada bloque <a> apunta a una página diferente definida en el atributo 'href'.
+      -->
       <div class="carousel-row">
-        <div class="ccard">
+        <a href="publications.html" class="ccard">
           <div class="ccard-img">
             <canvas class="particle-canvas"></canvas>
             <span class="mi" style="color:var(--ag-blue)">candlestick_chart</span>
@@ -313,8 +167,8 @@
             <p class="ccard-p">Finalizing "Algorithmic Trading Methods and Applications using Advanced Statistics,
               Optimization, and ML Techniques".</p>
           </div>
-        </div>
-        <div class="ccard">
+        </a>
+        <a href="public-sector.html" class="ccard">
           <div class="ccard-img">
             <canvas class="particle-canvas"></canvas>
             <span class="mi" style="color:var(--ag-red)">account_balance</span>
@@ -325,8 +179,8 @@
             <p class="ccard-p">Developed models of regulation and economic evaluation of public services applying causal
               inference.</p>
           </div>
-        </div>
-        <div class="ccard">
+        </a>
+        <a href="full-stack.html" class="ccard">
           <div class="ccard-img">
             <canvas class="particle-canvas"></canvas>
             <span class="mi" style="color:var(--ag-yellow)">smartphone</span>
@@ -337,8 +191,8 @@
             <p class="ccard-p">Developing full-stack apps (React Native, Node.js) with predictive AI and integrated
               payments for startups.</p>
           </div>
-        </div>
-        <div class="ccard">
+        </a>
+        <a href="real-estate.html" class="ccard">
           <div class="ccard-img">
             <canvas class="particle-canvas"></canvas>
             <span class="mi" style="color:var(--ag-green)">location_city</span>
@@ -346,64 +200,18 @@
           <div class="ccard-body">
             <p class="ccard-tag">Real Estate & Causal AI</p>
             <h3 class="ccard-h">Rental Market Evaluation</h3>
-            <p class="ccard-p">Causal analysis (Diff-in-Diff) of Spain’s residential rental market and proptech
+            <p class="ccard-p">Causal analysis (Diff-in-Diff) of Spain's residential rental market and proptech
               valuation platforms.</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
 
   <!-- ════════════════════════════════════════
-     SPLIT 2: EDUCACION
-════════════════════════════════════════ -->
-  <section class="ag-sec" id="education">
-    <div class="ag-con">
-      <div class="ag-split flip reveal">
-        <div class="sv">
-          <div class="edu-card" style="border-color: rgba(66,133,244,.4); background: rgba(66,133,244,.05);">
-            <div class="edu-degree">Master's in Economics, Regulation & Competition</div>
-            <div class="edu-period">Universitat de Barcelona</div>
-            <div class="edu-detail">Advanced specialization in market analysis, efficiency, and public services
-              regulation.</div>
-          </div>
-          <div class="edu-card">
-            <div class="edu-degree">Bachelor's Degree in Economics</div>
-            <div class="edu-period">Universidad Andina del Cusco</div>
-            <div class="edu-detail">Core foundation in advanced statistics, econometrics, and investment models.</div>
-          </div>
-          <div class="edu-card">
-            <div class="edu-degree">IFCD0112 · OOP & Databases Certification</div>
-            <div class="edu-period">SOC Catalunya</div>
-            <div class="edu-detail">Professional software development training (710h) bridging robust backend systems
-              and code architecture.</div>
-          </div>
-        </div>
-        <div>
-          <p class="eyebrow">Education</p>
-          <h2 class="sh">Academic rigor, tech evolution</h2>
-          <p class="sp">Combining university-level econometric mastery with certified practical training directly
-            applicable to software production.</p>
-          <ul class="chk-list">
-            <li class="chk-item">
-              <span class="chk-dot cd-b"><span class="mi" style="font-size:12px">check</span></span>
-              <div><strong>Advanced Economics</strong> &middot; Master's from a top European university</div>
-            </li>
-            <li class="chk-item">
-              <span class="chk-dot cd-g"><span class="mi" style="font-size:12px">check</span></span>
-              <div><strong>Certified Tech</strong> &middot; Spanish government-recognized coding credential</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════
      CTA / CONTACTO
 ════════════════════════════════════════ -->
   <section class="ag-cta" id="contact">
-    <canvas id="footer-canvas"></canvas>
     <p class="eyebrow reveal">Let's Talk</p>
     <h2 class="sh reveal d1">Have a project or proposal?</h2>
     <p class="sp reveal d2">Open to roles in quantitative analysis, causal AI, or full-stack development. Immediate
@@ -429,431 +237,16 @@
       </a>
       <nav class="footer-links">
         <a href="mailto:darwin@abarcavargas.com">darwin@abarcavargas.com</a>
-        <a href="tel:+34666133977">+34 666 13 39 77</a>
+
       </nav>
       <span class="footer-copy">© 2026 Darwin Abarca · Barcelona, Spain</span>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    /* ═══════════════════════════════
-       STARS
-    ═══════════════════════════════ */
-    (function () {
-      const c = document.getElementById('stars-canvas');
-      if (!c) return;
-      const x = c.getContext('2d');
-      let S = [];
-      function resize() { c.width = innerWidth; c.height = innerHeight; }
-      function init(n = 260) {
-        S = Array.from({ length: n }, () => ({
-          x: Math.random() * innerWidth, y: Math.random() * innerHeight,
-          r: Math.random() * 1.4 + .2, a: Math.random(),
-          da: (Math.random() - .5) * .008,
-          vx: (Math.random() - .5) * .045, vy: (Math.random() - .5) * .045
-        }));
-      }
-      function draw() {
-        x.clearRect(0, 0, c.width, c.height);
-        S.forEach(s => {
-          s.x = (s.x + s.vx + c.width) % c.width;
-          s.y = (s.y + s.vy + c.height) % c.height;
-          s.a = Math.max(.04, Math.min(1, s.a + s.da));
-          if (s.a <= .04 || s.a >= 1) s.da *= -1;
-          x.beginPath(); x.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          x.fillStyle = `rgba(255,255,255,${s.a.toFixed(3)})`; x.fill();
-        });
-        requestAnimationFrame(draw);
-      }
-      resize(); init(); draw();
-      window.addEventListener('resize', () => { resize(); init(); });
-    })();
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/whatsapp-widget.js"></script>
 
-    /* ═══════════════════════════════
-       HERO & FOOTER PARTICLE SYSTEMS (FINAL SEPARATION)
-    ═══════════════════════════════ */
-    (function () {
-      const heroCanvas = document.getElementById('ring-canvas');
-      const footerCanvas = document.getElementById('footer-canvas');
-      const DPR = window.devicePixelRatio || 1;
-      const mouse = { x: -2000, y: -2000 };
-      let lastMove = Date.now();
-
-      window.addEventListener('mousemove', e => {
-        mouse.x = e.clientX; mouse.y = e.clientY;
-        lastMove = Date.now();
-      });
-
-      class Dot {
-        constructor(x, y, minA = 0.12, maxA = 0.4) {
-          this.bx = x; this.by = y;
-          this.x = x; this.y = y;
-          this.tx = x; this.ty = y;
-          this.baseAlpha = minA + Math.random() * (maxA - minA);
-          this.alpha = this.baseAlpha;
-          this.tAlpha = this.baseAlpha;
-          this.active = false;
-
-          this.px = Math.random() * Math.PI * 2;
-          this.py = Math.random() * Math.PI * 2;
-          this.ps = 0.02 + Math.random() * 0.03;
-        }
-        update(time, breezeAmp = 5) {
-          const ox = Math.sin(time * this.ps + this.px) * breezeAmp;
-          const oy = Math.cos(time * this.ps + this.py) * breezeAmp;
-
-          const s = this.active ? 0.06 : 0.025;
-          this.x += (this.tx - this.x) * s;
-          this.y += (this.ty - this.y) * s;
-          this.alpha += (this.tAlpha - this.alpha) * 0.08;
-        }
-        updateTarget(tx, ty, active, targetAlpha, time, breezeAmp) {
-          this.active = active;
-          const ox = Math.sin(time * this.ps + this.px) * breezeAmp;
-          const oy = Math.cos(time * this.ps + this.py) * breezeAmp;
-
-          if (this.active) {
-            this.tx = tx; this.ty = ty;
-            this.tAlpha = targetAlpha;
-          } else {
-            this.tx = this.bx + ox;
-            this.ty = this.by + oy;
-            this.tAlpha = this.baseAlpha;
-          }
-          this.update(time, breezeAmp);
-        }
-        draw(ctx, size) {
-          ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
-          // Tamaño entero y redondeo al píxel para nitidez máxima
-          ctx.fillRect(Math.floor(this.x), Math.floor(this.y), Math.floor(size), Math.floor(size));
-        }
-      }
-
-      function setupSystem(canvas, color, isHero = false) {
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        ctx.imageSmoothingEnabled = false; // Desactivar suavizado para nitidez extra
-        let W, H, dots = [];
-        const SPACING = 12;
-        const radius = 80;
-        let time = 0;
-        let rotationAngle = 0;
-
-        function resize() {
-          const rw = canvas.parentElement.offsetWidth, rh = canvas.parentElement.offsetHeight;
-          W = canvas.width = rw * DPR;
-          H = canvas.height = rh * DPR;
-          canvas.style.width = rw + 'px';
-          canvas.style.height = rh + 'px';
-          ctx.scale(DPR, DPR); W /= DPR; H /= DPR;
-          init();
-        }
-
-        function init() {
-          dots = [];
-          const cols = Math.floor(W / SPACING), rows = Math.floor(H / SPACING);
-          const ox = (W - cols * SPACING) / 2, oy = (H - rows * SPACING) / 2;
-
-          // Rango de Alpha: Hero (Sutil/Nébula) vs Footer (Sólido/Punto ".")
-          const minA = isHero ? 0.24 : 0.45;
-          const maxA = isHero ? 0.50 : 0.75;
-
-          for (let r = 0; r <= rows; r++) {
-            for (let c = 0; c <= cols; c++) {
-              dots.push(new Dot(ox + c * SPACING, oy + r * SPACING, minA, maxA));
-            }
-          }
-        }
-
-        function loop() {
-          ctx.clearRect(0, 0, W, H);
-          ctx.fillStyle = color;
-          time++;
-
-          const rect = canvas.getBoundingClientRect();
-          const mx = mouse.x - rect.left, my = mouse.y - rect.top;
-
-          if (isHero) {
-            rotationAngle += 0.0025;
-          }
-
-          dots.forEach((d, i) => {
-            const dist = Math.hypot(d.x - mx, d.y - my);
-            const active = dist < 140;
-            const breeze = isHero ? 12 : 5;
-
-            if (isHero) {
-              if (active) {
-                const phi = Math.acos(-1 + (2 * i) / dots.length);
-                const theta = Math.sqrt(dots.length * Math.PI) * phi;
-                const tx = mx + radius * Math.cos(theta) * Math.sin(phi);
-                const ty = my + radius * Math.sin(theta) * Math.sin(phi);
-                const tz = radius * Math.cos(phi);
-                const ta = 0.35 + (tz / radius + 1) * 0.45;
-                d.updateTarget(tx, ty, true, ta, time, breeze);
-              } else {
-                // MODO POR DEFECTO: GALAXIA (Inmediata)
-                const cx = W / 2, cy = H / 2;
-                const dx = d.bx - cx, dy = d.by - cy;
-                const distCenter = Math.hypot(dx, dy);
-                const ang = Math.atan2(dy, dx) + rotationAngle * (1 + distCenter / 500);
-                const gtx = cx + Math.cos(ang) * distCenter;
-                const gty = cy + Math.sin(ang) * distCenter;
-                const ox = Math.sin(time * d.ps + d.px) * breeze;
-                const oy = Math.cos(time * d.ps + d.py) * breeze;
-                d.tx = gtx + ox; d.ty = gty + oy; d.tAlpha = d.baseAlpha;
-                d.update(time, breeze);
-              }
-            } else {
-              // FOOTER (REPOLE / DISTORTION ONLY)
-              if (active) {
-                const angle = Math.atan2(d.by - my, d.bx - mx);
-                const push = Math.max(0, 140 - dist) * 0.6;
-                const tx = d.bx + Math.cos(angle) * push;
-                const ty = d.by + Math.sin(angle) * push;
-                // Important: Keep original alpha (d.baseAlpha) for sharpness
-                d.updateTarget(tx, ty, true, d.baseAlpha, time, breeze);
-              } else {
-                d.updateTarget(0, 0, false, 0, time, breeze);
-              }
-            }
-            d.draw(ctx, isHero ? 2.4 : 1);
-          });
-          requestAnimationFrame(loop);
-        }
-        window.addEventListener('resize', resize);
-        resize(); loop();
-      }
-
-      setupSystem(heroCanvas, 'rgba(66, 133, 244, 1)', true);
-      setupSystem(footerCanvas, '#ffb300', false);
-    })();
-
-    /* ═══════════════════════════════
-       REVEAL
-    ═══════════════════════════════ */
-    (function () {
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-      }, { threshold: .1 });
-      document.querySelectorAll('.reveal,.bc').forEach(el => io.observe(el));
-    })();
-
-    /* ═══════════════════════════════
-       CAROUSEL DRAG
-    ═══════════════════════════════ */
-    (function () {
-      const w = document.getElementById('car-wrap');
-      if (!w) return;
-      let dn = false, sx = 0, sl = 0;
-      w.addEventListener('mousedown', e => { dn = true; sx = e.pageX - w.offsetLeft; sl = w.scrollLeft; w.style.cursor = 'grabbing'; });
-      w.addEventListener('mouseleave', () => { dn = false; w.style.cursor = 'grab'; });
-      w.addEventListener('mouseup', () => { dn = false; w.style.cursor = 'grab'; });
-      w.addEventListener('mousemove', e => {
-        if (!dn) return; e.preventDefault();
-        w.scrollLeft = sl - (e.pageX - w.offsetLeft - sx) * 1.4;
-      });
-    })();
-
-    /* ═══════════════════════════════
-       NAV TINT ON SCROLL
-    ═══════════════════════════════ */
-    (function () {
-      const nav = document.getElementById('ag-nav');
-      if (!nav) return;
-      window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 48), { passive: true });
-    })();
-
-    /* ═══════════════════════════════
-       HERO H1 TYPING EFFECT
-    ═══════════════════════════════ */
-    (function () {
-      const h1 = document.querySelector('.hero-h');
-      if (!h1) return;
-
-      const elementsToType = [
-        "D", "a", "r", "w", "i", "n", " ", "M", "i", "g", "u", "e", "l", " ", "<br>",
-        '<span class="g-r">A</span>',
-        '<span class="g-r">b</span>',
-        '<span class="g-r">a</span>',
-        '<span class="g-r">r</span>',
-        '<span class="g-r">c</span>',
-        '<span class="g-r">a</span>'
-
-      ];
-
-      h1.innerHTML = '<span class="hero-cursor"></span>';
-      h1.style.opacity = '1';
-
-      let i = 0;
-      function type() {
-        if (i < elementsToType.length) {
-          const currentHTML = h1.innerHTML;
-          h1.innerHTML = currentHTML.replace('<span class="hero-cursor"></span>', elementsToType[i] + '<span class="hero-cursor"></span>');
-          i++;
-          setTimeout(type, 80 + Math.random() * 100); // Escritura más pausada y humana
-        } else {
-          setTimeout(() => {
-            document.body.classList.add('intro-done');
-
-            // Los cuadros de stats aparecen después (después de que el texto termine su animación)
-            setTimeout(() => {
-              const grid = document.querySelector('.hero-stats-grid');
-              if (grid) {
-                const observer = new IntersectionObserver((entries) => {
-                  if (entries[0].isIntersecting) {
-                    grid.classList.add('play-anim');
-                    setTimeout(startCounters, 500); // Esperar un poco antes de los números
-                    observer.disconnect();
-                  }
-                }, { threshold: 0.1 });
-                observer.observe(grid);
-              }
-            }, 2000); // 2 segundos de separación para que el texto respire
-          }, 800);
-        }
-      }
-
-      function startCounters() {
-        const counters = document.querySelectorAll('.counter');
-        const duration = 2000;
-
-        counters.forEach(c => {
-          const target = +c.getAttribute('data-target');
-          let startTime = null;
-
-          function update(currentTime) {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            // Ease out function to decelerate naturally
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-
-            c.textContent = Math.floor(easeOutQuart * target);
-
-            if (progress < 1) {
-              requestAnimationFrame(update);
-            } else {
-              c.textContent = target; // force final value just in case
-            }
-          }
-          requestAnimationFrame(update);
-        });
-      }
-
-      setTimeout(type, 400);
-    })();
-
-    /* ═══════════════════════════════
-       PARTICLE HOVER BRACKETS (RESTORED)
-    ═══════════════════════════════ */
-    (function () {
-      const cards = document.querySelectorAll('.ccard-img');
-      const SPACING = 7;
-      const DOT_SIZE = 1.2;
-      const LERP_IN = 0.15;
-      const LERP_OUT = 0.02;
-      const SCATTER = 6;
-      const ALPHA_LERP = 0.1;
-      const DPR = window.devicePixelRatio || 1;
-
-      class DotCard {
-        constructor(x, y) {
-          this.bx = x; this.by = y;
-          this.x = x; this.y = y;
-          this.tx = x; this.ty = y;
-          this.baseAlpha = 0.15 + Math.random() * 0.2;
-          this.alpha = this.baseAlpha;
-          this.tAlpha = this.baseAlpha;
-          this.active = false;
-          this._newScatter();
-        }
-        _newScatter() {
-          const g = () => ((Math.random() + Math.random() + Math.random()) / 3 - 0.5) * 2;
-          this.sx = g() * SCATTER;
-          this.sy = g() * SCATTER;
-        }
-        assignTarget(tx, ty, ta) {
-          this.tx = tx; this.ty = ty;
-          this.tAlpha = ta;
-          this.active = true;
-        }
-        release() {
-          this.tx = this.bx;
-          this.ty = this.by;
-          this.tAlpha = this.baseAlpha;
-          this.active = false;
-          this._newScatter();
-        }
-        update() {
-          const s = this.active ? LERP_IN : LERP_OUT;
-          this.x += (this.tx - this.x) * s;
-          this.y += (this.ty - this.y) * s;
-          this.alpha += (this.tAlpha - this.alpha) * ALPHA_LERP;
-        }
-        draw(ctx) {
-          ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
-          ctx.fillRect(Math.round(this.x), Math.round(this.y), DOT_SIZE, DOT_SIZE);
-        }
-      }
-
-      function getCirclePoints(W, H) {
-        const pts = [];
-        const cx = W / 2, cy = H / 2 - 2;
-        const radius = 42;
-        const totalPoints = 180;
-        for (let i = 0; i < totalPoints; i++) {
-          const angle = (i / totalPoints) * Math.PI * 2;
-          pts.push({ x: cx + Math.cos(angle) * radius, y: cy + Math.sin(angle) * radius });
-        }
-        return pts.sort(() => Math.random() - 0.5);
-      }
-
-      function initParticles() {
-        cards.forEach(cardImg => {
-          cardImg.style.position = 'relative';
-          let canvas = cardImg.querySelector('.particle-canvas');
-          if (!canvas) return;
-          const ctx = canvas.getContext('2d');
-          const icon = cardImg.querySelector('.mi');
-          const iconColor = icon ? window.getComputedStyle(icon).color : '#ffffff';
-          let W = cardImg.offsetWidth || 316, H = cardImg.offsetHeight || 186;
-          canvas.width = W * DPR; canvas.height = H * DPR;
-          ctx.scale(DPR, DPR);
-
-          let dots = [];
-          const cols = Math.floor(W / SPACING), rows = Math.floor(H / SPACING);
-          const ox = (W - cols * SPACING) / 2, oy = (H - rows * SPACING) / 2;
-          for (let r = 0; r <= rows; r++) {
-            for (let c = 0; c <= cols; c++) {
-              dots.push(new DotCard(ox + c * SPACING, oy + r * SPACING));
-            }
-          }
-
-          let bPts = getCirclePoints(W, H);
-          cardImg.parentElement.addEventListener('mouseenter', () => {
-            dots.forEach((d, i) => {
-              const sp = bPts[i % bPts.length];
-              const ta = 0.6 + Math.random() * 0.4;
-              d.assignTarget(sp.x, sp.y, ta);
-            });
-          });
-          cardImg.parentElement.addEventListener('mouseleave', () => {
-            dots.forEach(d => d.release());
-          });
-
-          function loop() {
-            ctx.clearRect(0, 0, W, H);
-            ctx.fillStyle = iconColor;
-            dots.forEach(d => { d.update(); d.draw(ctx); });
-            requestAnimationFrame(loop);
-          }
-          loop();
-        });
-      }
-      setTimeout(initParticles, 300);
-    })();
-  </script>
 </body>
 
 </html>
